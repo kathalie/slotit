@@ -5,18 +5,17 @@ import AboutUsPage from "../components/pages/AboutUsPage";
 import ProjectsPage from "../components/pages/group_pages/ProjectsPage";
 import IdProjectPage from "../components/pages/individual_pages/IdProjectPage";
 import MainPage from "../components/pages/MainPage";
-import TranslationsPage from "../components/pages/particular_pages/TranslationsPage";
 import IdNewsPage from "../components/pages/individual_pages/IdNewsPage";
 import {articleFilters} from "../API/APIQueryBuilder";
 
-export type Page = {
-    link: string | Page[],
+export type LinkToPage = {
+    link: string | LinkToPage[],
     component: (params?: any) => JSX.Element,
     params?: any,
     caption?: string,
 }
 
-export const dropdown: Page[] = [
+export const dropdown: LinkToPage[] = [
     {
         link: "/articles/blog",
         component: ArticlesPage,
@@ -25,13 +24,13 @@ export const dropdown: Page[] = [
     },
     {
         link: "/articles/translations",
-        component: TranslationsPage,
+        component: ArticlesPage,
         params: articleFilters.byType("translation"),
         caption: "Переклади статей українською"
     },
 ]
 
-export const navigation: Page[] = [
+export const navigation: LinkToPage[] = [
     {link: "/", component: MainPage, caption: "Головна"},
     {link: "/news", component: NewsPage, caption: "Новини"},
     {link: Object.values(dropdown), component: ArticlesPage, caption: "Пости"},
@@ -39,10 +38,10 @@ export const navigation: Page[] = [
     {link: "/about_us", component: AboutUsPage, caption: "Про нас"},
 ]
 
-export const idPages: Page[] = [
+export const idPages: LinkToPage[] = [
+    {link: "/projects/:id", component: IdProjectPage},
     {link: "/news/:id", component: IdNewsPage},
     {link: "/articles/:id", component: IdArticlePage},
-    {link: "/projects/:id", component: IdProjectPage},
 ];
 
-export const pages: Page[] = {...dropdown, ...navigation, ...idPages};
+export const allLinksToPages: LinkToPage[] = [...dropdown, ...(navigation.filter(link => !Array.isArray(link.link))), ...idPages];

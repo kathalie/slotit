@@ -1,18 +1,19 @@
 import React from 'react';
 import Loader from "./UI/Loader";
 
-type ComponentOrLoaderProps = {
+type ComponentControllerProps = {
     isLoading: boolean,
     error: unknown,
-    component: React.Component
+    componentCreator: (props: any) => JSX.Element,
+    props: any
 }
 
-const ComponentHandler:React.FC<ComponentOrLoaderProps> = ({isLoading, error, component}) => {
+const ComponentController: React.FC<ComponentControllerProps> = ({isLoading, error, componentCreator, props}) => {
     if (error) return <h1>error</h1>;
 
     if (isLoading) return <Loader/>;
 
-    return (component);
+    return (componentCreator(props));
 };
 
-export default ComponentHandler;
+export default ComponentController;

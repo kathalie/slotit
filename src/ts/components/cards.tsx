@@ -2,7 +2,7 @@ import React from 'react';
 import {Article, News, Project} from "../types/models";
 
 export type CardProps<T> = {
-    item: T,
+    item: T
 }
 
 export const NewsCard = ({item}: CardProps<News>) => {
@@ -16,7 +16,7 @@ export const NewsCard = ({item}: CardProps<News>) => {
     );
 };
 
-export const ProjectCard = ({ item }: CardProps<Project>)  => {
+export const ProjectCard = ({item}: CardProps<Project>) => {
     return (
         <div className="project-card">
             <h2>{item.title}</h2>
@@ -26,9 +26,11 @@ export const ProjectCard = ({ item }: CardProps<Project>)  => {
 };
 
 //TODO
-export const ArticleCard = ({ item }: CardProps<Article>)  => {
+export const ArticleCard = ({item}: CardProps<Article>) => {
     return (
-        <div className="project-card">
+        <div className="article-card">
+            <p className="date">{item.date.toString()}</p>
+            <img src={item.pictureThumbnail} alt={`Picture of ${item.title}`}/>
             <h2>{item.title}</h2>
             <p>{item.description}</p>
         </div>

@@ -1,23 +1,28 @@
 import React from 'react';
+import Carousel from 'better-react-carousel'
+import {Link} from "react-router-dom";
 
-const Carousel = () => {
+//TODO REFACTOR!!!!!!!
+const carouselItems = [
+    {caption: "Наш блог", link: "/articles/blog", src: "https://picsum.photos/800/600?random=1"},
+    {caption: "Переклади популярних IT-статей", link: "/articles/translations", src: "https://picsum.photos/800/600?random=2"},
+    {caption: "Наші розробки", link: "/projects", src: "https://picsum.photos/800/600?random=3"},
+    {caption: "Дізнайся більше про нас!", link: "/aboutUs", src: "https://picsum.photos/800/600?random=4"},
+]
+
+const MainCarousel = () => {
     return (
-        <Carousel cols={2} rows={1} gap={10} loop>
-            <Carousel.Item>
-                <img width="100%" src="https://picsum.photos/800/600?random=1" />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img width="100%" src="https://picsum.photos/800/600?random=2" />
-            </Carousel.Item>
-            <Carousel.Item>
-                <img width="100%" src="https://picsum.photos/800/600?random=3" />
-            </Carousel.Item>
-            <Carousel.Item>
-                {/* anything you want to show in the grid */}
-            </Carousel.Item>
-            {/* ... */}
+        <Carousel cols={1} rows={1} loop autoplay={10000} showDots>
+            {
+                carouselItems.map(item =>
+                    <Carousel.Item key={item.link}>
+                        <img width="100%" src={item.src} alt={`Image for ${item.caption} link`}/>
+                        <Link to={item.link}>{item.caption}</Link>
+                    </Carousel.Item>
+                )
+            }
         </Carousel>
     );
 };
 
-export default Carousel;
+export default MainCarousel;

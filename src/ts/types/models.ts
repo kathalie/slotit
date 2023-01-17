@@ -12,7 +12,8 @@ export type Project = HasId & CommonStructure;
 
 export type News = HasId & CommonStructure & {
     date: Date,
-    pictureThumbnail: string
+    pictureThumbnail: string,
+    project_id: number
 };
 
 export type Article = HasId & CommonStructure & {

@@ -8,9 +8,17 @@ D
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-;
-src/App.tsx,8\3\835da56f32df714aaed6285a5b7fc3a7807851e4
-=
-src/index.tsx,5\a\5ab44fe33ca96299f51ad4778a73e425b92bf439
+A
+package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
+U
+%src/ts/components/UI/MainCarousel.tsx,0\7\0762c7c4559e84ec6112137bece85ae470cc7a21
+M
+src/ts/types/callback.type.ts,a\1\a109d0e0a78afa8a57e59dcb7dac1fc8a14e6065
+M
+src/ts/components/UI/Logo.tsx,9\0\90e85007cc4cb1f9efff8ae43e795aa6b52955d9
+O
+src/ts/components/UI/Loader.tsx,1\0\1072755d6d01a28653a24ae6ba5de7ca0cb1b9b4
+W
+'src/ts/components/pages/AboutUsPage.tsx,d\4\d4d027bce852c154a3c012a8f738654746726c01
+J
+src/ts/utils/randomizer.ts,c\9\c9568109d3eea69c7f173462bd7d187698053254

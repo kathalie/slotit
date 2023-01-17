@@ -1,30 +1,21 @@
-import React, {ReactComponentElement} from 'react';
+import React from 'react';
 
 import {Route, Routes} from 'react-router-dom';
-import {pages} from "../router/paths";
+import {allLinksToPages, LinkToPage} from "../router/routes";
 import MainNavigation from "./UI/MainNavigation";
-
-type PageInfo = {
-    link: string,
-    component: (props?: any) => ReactComponentElement<any>,
-    caption?: string,
-}
 
 const AppRouter = () => {
     return (
         <div>
             <MainNavigation/>
             <Routes>
-                {/*{Object.values(pages).map(*/}
-                {/*    particularPages =>*/}
-                {/*        Object.values(particularPages).map((page: PageInfo) =>*/}
-                {/*            <Route path={page.link} element={page.component()}/>*/}
-                {/*        )*/}
-                {/*)                */}
-                {Object.values(pages.navLinks).map((page: PageInfo) =>
-                    <Route path={page.link} element={page.component()} key={page.link}/>
-                )};
-                <Route path={pages.others.main.link} element={pages.others.main.component()}/>
+                {allLinksToPages.map(
+                    (link: LinkToPage) => {
+                        const component = link.component(link.params ?? {});
+                        //console.log(link.link)
+                        return (<Route path={link.link as string} element={component} key={link.link as string}/>);
+                    }
+                )}
             </Routes>
         </div>
     );

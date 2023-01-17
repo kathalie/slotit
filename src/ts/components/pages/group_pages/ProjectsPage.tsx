@@ -1,29 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {useFetching} from "../../../hooks/useFetching";
-import {ProjectsService} from "../../../API/BaseService";
-import {ProjectsFeed} from "../../feeds";
-import Loader from "../../Loader";
+import React, {useState} from 'react';
+import {FetchingFeed} from "../../FetchingComponent";
+import {APIQueryBuilder} from "../../../API/APIQueryBuilder";
+import {ItemType} from "../../../types/item.types";
 
 const ProjectsPage = () => {
-    const [projects, setProjects] = useState([]);
+    const limit = 10;
+    const [page, setPage] = useState(1);
 
-    const [fetchProjects, areProjectsLoading, projectsError] = useFetching(async (page, limit) => {
-        const response = await new ProjectsService().getPerPage(page, limit);
-        setProjects([...projects, ...response.data as []]);
-    });
+    const queryBuilder = new APIQueryBuilder({_limit: limit, _page: page});
 
-    useEffect(() => {
-        fetchProjects(1, 10);
-    }, []);
 
     return (
         <div>
             <h1>Проекти</h1>
-            {
-                        areProjectsLoading ?
-                            <Loader/> :
-                            <ProjectsFeed items={projects}/>
-            }
+            <FetchingFeed itemType={ItemType.Project} queryBuilder={queryBuilder}/>
         </div>
     );
 };

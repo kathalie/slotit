@@ -1,36 +1,13 @@
 import React from 'react';
 import {Callback} from "../types/callback.type";
-import {SortsProps} from "../API/services";
+import {Queries} from "../API/APIQueryBuilder";
 
 type QueriesProps = {
-    queries: {
-        filter: string,
-        sort: SortsProps
-    },
+    queries: Queries,
     setQueries: Callback
 }
 
-const Queries: React.FC<QueriesProps> = ({queries, setQueries}) => {
-    // const addSortingFields = (sort: SortsProps) => {
-    //     setQueries({
-    //         filter: queries.filter,
-    //         sort: {
-    //             _sort: [...queries.sort._sort, sort._sort],
-    //             _order: [...queries.sort._order, sort._order],
-    //         }
-    //     });
-    // }
-    //
-    // const removeSort = (sort: SortsProps) => {
-    //     setQueries({
-    //         filter: queries.filter,
-    //         sort: {
-    //             _sort: [...queries.sort._sort, ]
-    //         }
-    //     });
-    // }
-
-
+const Filters: React.FC<QueriesProps> = ({queries, setQueries}) => {
     return (
         <div>
             {/*<input type="text"*/}
@@ -58,4 +35,4 @@ const Queries: React.FC<QueriesProps> = ({queries, setQueries}) => {
     );
 };
 
-export default Queries;
+export default Filters;

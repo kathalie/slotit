@@ -1,7 +1,6 @@
 import React from 'react';
-
-import AppRouter from "./components/AppRouter";
 import Logo from "./components/UI/Logo";
+import AppRouter from "./components/AppRouter";
 
 function App() {
   return (

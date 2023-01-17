@@ -1,19 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "./css/index.css";
+import App from './ts/App';
+import {BrowserRouter} from "react-router-dom";
+import {articlesService} from "./init";
+import {APIQueryBuilder, articleFilters, sorts} from "./ts/API/APIQueryBuilder";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    document.getElementById('root') as HTMLElement
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const qb = new APIQueryBuilder({_limit: 3, _page: 1});
+qb.addSort(sorts.byDate("desc"));
+qb.addFilter(articleFilters.byType("blog"));
+
+const response = articlesService.getByQuery(qb).then();
+
+console.log(response)
+
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <App/>
+        </BrowserRouter>
+    </React.StrictMode>
+);

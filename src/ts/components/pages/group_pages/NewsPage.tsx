@@ -1,31 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import {useFetching} from "../../../hooks/useFetching";
-import {NewsService} from "../../../API/BaseService";
-import {NewsFeed} from "../../feeds";
+import React, {useState} from 'react';
+import {FetchingFeed} from "../../FetchingComponent";
+import {APIQueryBuilder} from "../../../API/APIQueryBuilder";
+import {ItemType} from "../../../types/item.types";
 
 const NewsPage = () => {
-    const [news, setNews] = useState([]);
+    const limit = 10;
+    const [page, setPage] = useState(1);
 
-    const [fetchProjects, areProjectsLoading, projectsError] = useFetching(async (page, limit) => {
-        const response = await new NewsService().getPerPage(page, limit);
-        setNews([...news, ...response.data as []]);
-    });
-
-    useEffect(() => {
-        fetchProjects(1, 10);
-    }, []);
+    const queryBuilder = new APIQueryBuilder({_limit: limit, _page: page});
 
     return (
         <div>
             <h1>Новини</h1>
-            {projectsError &&
-                <h1> Мяу :( ${projectsError}</h1>
-            }
-            {
-                areProjectsLoading ?
-                    <p>NEWS ARE LOADING</p> :
-                    <NewsFeed items={news}/>
-            }
+            <FetchingFeed itemType={ItemType.News} queryBuilder={queryBuilder}/>
         </div>
     );
 };

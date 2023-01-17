@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ArticlePage = () => {
+const IdArticlePage = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const ArticlePage = () => {
     );
 };
 
-export default ArticlePage;
+export default IdArticlePage;

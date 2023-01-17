@@ -32,6 +32,14 @@ export class APIQueryBuilder {
     constructor(private pagination: PaginationProps) {
     }
 
+    public getPage(): number {
+        return this.pagination._page;
+    }
+
+    public getLimit(): number {
+        return this.pagination._limit;
+    }
+
     private add<F extends CallableFunction>(what: F, where: F[]): APIQueryBuilder {
         where.push(what);
 
@@ -62,6 +70,16 @@ export class APIQueryBuilder {
         return this.remove(sort, this.sorts);
     }
 
+    // public random(n: number, limit: number): APIQueryBuilder {
+    //     const randomIds: number[] = randomUniqueNumbers(n, limit);
+    //
+    //     for (const randomId of randomIds) {
+    //         this.addFilter(byId(randomId));
+    //     }
+    //
+    //     return this;
+    // }
+
     public getQueryParams(): object {
         let params: any = {
             _page: this.pagination._page,
@@ -83,12 +101,27 @@ export class APIQueryBuilder {
 
 
 export const articleFilters = {
-    byType: (value: ArticleType): APIFilter => function typeFilter() {
-        return {field: "type", value: value};
+    byType: (articleType: ArticleType): APIFilter => function typeFilter() {
+        return {field: "type", value: articleType};
     }
 }
 
-export const articleSorts = {
+export const newsFilters = {
+    byProject: (projectId: number): APIFilter => function projectIdFilter() {
+        return {field: "project_id", value: projectId};
+    }
+}
+
+export const byId = (id: number): APIFilter => function idFilter() {
+    return {field: "id", value: id};
+}
+
+// export const customFilter = (field: string, value: any): APIFilter => function() {
+//     //this.name = name;
+//     return {field, value};
+// }
+
+export const sorts = {
     byType: (order: SortOrder): APISort => function topicSort() {
         return {_sort: "type", _order: order};
     },
