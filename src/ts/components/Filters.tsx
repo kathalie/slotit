@@ -1,6 +1,6 @@
 import React from 'react';
 import {Callback} from "../types/callback.type";
-import {Queries} from "../API/APIQueryBuilder";
+import {Queries} from "../API/query_builder/queries.types";
 
 type QueriesProps = {
     queries: Queries,
@@ -16,7 +16,7 @@ const Filters: React.FC<QueriesProps> = ({queries, setQueries}) => {
             {/*       placeholder="Поиск..."/>*/}
             <label>
                 Тип статей:
-                <select name="filter" id="articles_filter">
+                <select name="filter" id="posts_filter">
                     <option value="all">Всі</option>
                     <option value="blog">Наш блог</option>
                     <option value="translation">Переклади статей</option>
@@ -24,7 +24,7 @@ const Filters: React.FC<QueriesProps> = ({queries, setQueries}) => {
             </label>
             <label>
                 Сортувати за:
-                <div id="articles_sort">
+                <div id="posts_sort">
                     <button data-value="date" data-order="">Датою</button>
                     <button data-value="title" data-order="">Назвою</button>
                     <button data-value="type" data-order="">Типом</button>

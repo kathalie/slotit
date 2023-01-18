@@ -1,5 +1,5 @@
 import React from 'react';
-import {Article, News, Project} from "../types/models";
+import {Post, News, Project} from "../types/models";
 
 export type CardProps<T> = {
     item: T
@@ -25,10 +25,9 @@ export const ProjectCard = ({item}: CardProps<Project>) => {
     );
 };
 
-//TODO
-export const ArticleCard = ({item}: CardProps<Article>) => {
+export const PostCard = ({item}: CardProps<Post>) => {
     return (
-        <div className="article-card">
+        <div className="post-card">
             <p className="date">{item.date.toString()}</p>
             <img src={item.pictureThumbnail} alt={`Picture of ${item.title}`}/>
             <h2>{item.title}</h2>

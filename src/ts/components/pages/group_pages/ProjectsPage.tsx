@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {FetchingFeed} from "../../FetchingComponent";
-import {APIQueryBuilder} from "../../../API/APIQueryBuilder";
+import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../../types/item.types";
 
 const ProjectsPage = () => {
-    const limit = 10;
     const [page, setPage] = useState(1);
 
-    const queryBuilder = new APIQueryBuilder({_limit: limit, _page: page});
+    const queryBuilder = new APIQueryBuilder()
+        .setPage(page);
 
 
     return (

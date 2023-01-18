@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {Callback} from "../types/callback.type";
 import {IService} from "../API/services";
-import {APIQueryBuilder} from "../API/APIQueryBuilder";
+import {IQueryBuilder} from "../API/query_builder/APIQueryBuilder";
 import {HasId} from "../types/models";
 
 const useFetching = (
@@ -35,13 +35,11 @@ const useBaseFetch  = (callback: Callback, deps?: any[]): [boolean, unknown] => 
 }
 
 export const useFetchItems = <T extends HasId>(previousItems: T[], updateItems: Callback, service: IService<T>,
-                                 queryBuilder: APIQueryBuilder, deps?: any[]): [boolean, unknown] => {
+                                 queryBuilder: IQueryBuilder, deps?: any[]): [boolean, unknown] => {
 
     const callback = async () => {
-        const fetchedResponse = await service.getByQuery(queryBuilder);
+        const fetchedResponse = (await service.getByQuery(queryBuilder)).data;
         updateItems([...previousItems, ...fetchedResponse]);
-
-        //await new Promise(resolve => setTimeout(resolve, 1000)); //TODO DELETE
     };
 
     return useBaseFetch(callback, deps);
@@ -52,9 +50,7 @@ export const useFetchItem = <T extends HasId>(id: number, setItem: Callback, ser
                                 deps?: any[]): [boolean, unknown] => {
 
     const callback = async () => {
-        setItem(await service.getById(id));
-
-        //await new Promise(resolve => setTimeout(resolve, 1000)); //TODO DELETE
+        setItem((await service.getById(id)).data);
     };
 
     return useBaseFetch(callback, deps);

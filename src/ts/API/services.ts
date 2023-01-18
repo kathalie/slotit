@@ -1,15 +1,14 @@
-import axios from "axios";
-import {Article, HasId, News, Project} from "../types/models";
-import {APIQueryBuilder} from "./APIQueryBuilder";
-import {randomUniqueNumbers} from "../utils/randomizer";
+import axios, {AxiosResponse} from "axios";
+import {HasId, News, Post, Project} from "../types/models";
+import {IQueryBuilder} from "./query_builder/APIQueryBuilder";
 
 export interface IService<T extends HasId> {
-    getRandom(n: number): Promise<T[]>;
-    getByQuery(queryBuilder: APIQueryBuilder): Promise<T[]>;
-    getById(id: number): Promise<T>;
+    getByQuery(queryBuilder: IQueryBuilder): Promise<AxiosResponse<T[]>>;
+
+    getById(id: number): Promise<AxiosResponse<T>>;
 }
 
-abstract class BaseService<T extends HasId> implements IService<T>{
+abstract class BaseService<T extends HasId> implements IService<T> {
     static readonly baseURL = "http://localhost:3000";
 
     protected constructor(private route: string) {
@@ -19,23 +18,12 @@ abstract class BaseService<T extends HasId> implements IService<T>{
         return [BaseService.baseURL, this.route, ...path].join("/");
     }
 
-    public async getRandom(n: number): Promise<T[]> {
-        const response = await axios.get<T[]>(this.getRoute());
-        const allItems = response.data;
-        const limit = allItems.length;
-
-        if (limit < n) return [] as T[];
-
-        const randomIds = randomUniqueNumbers(n, limit);
-        return allItems.filter((item) => randomIds.some(id => item.id === id));
+    public async getByQuery(queryBuilder: IQueryBuilder): Promise<AxiosResponse<T[]>> {
+        return axios.get<T[]>(this.getRoute(), {params: queryBuilder.getQueryParams()});
     }
 
-    public async getByQuery(queryBuilder: APIQueryBuilder): Promise<T[]> {
-        return (await axios.get<T[]>(this.getRoute(), {params: queryBuilder.getQueryParams()})).data;
-    }
-
-    public async getById(id: number): Promise<T> {
-        return (await axios.get<T>(this.getRoute(id))).data;
+    public async getById(id: number): Promise<AxiosResponse<T>> {
+        return axios.get<T>(this.getRoute(id));
     }
 }
 
@@ -52,8 +40,8 @@ export class ProjectsService extends BaseService<Project> {
     }
 }
 
-export class ArticlesService extends BaseService<Article> {
+export class PostsService extends BaseService<Post> {
     constructor() {
-        super("articles");
+        super("posts");
     }
 }

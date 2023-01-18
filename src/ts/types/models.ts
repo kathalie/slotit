@@ -8,7 +8,9 @@ type CommonStructure = {
     content: string,
 }
 
-export type Project = HasId & CommonStructure;
+export type Project = HasId & CommonStructure & {
+    inProcess: boolean
+};
 
 export type News = HasId & CommonStructure & {
     date: Date,
@@ -16,10 +18,10 @@ export type News = HasId & CommonStructure & {
     project_id: number
 };
 
-export type Article = HasId & CommonStructure & {
+export type Post = HasId & CommonStructure & {
     date: Date,
     pictureThumbnail: string,
-    type: ArticleType,
+    type: PostType,
 };
 
-export type ArticleType = "blog" | "translation" | "personal_article";
+export type PostType = "blog" | "translation" | "personal_post";

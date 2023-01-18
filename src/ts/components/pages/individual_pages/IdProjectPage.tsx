@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useParams} from "react-router-dom";
 import {Project} from "../../../types/models";
-import {FetchingComponent, FetchingFeed} from "../../FetchingComponent";
-import {APIQueryBuilder, newsFilters, sorts} from "../../../API/APIQueryBuilder";
+import {FetchingFeed, FetchingItemContent} from "../../FetchingComponent";
+import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../../types/item.types";
-import {useFetchItem} from "../../../hooks/useFetching";
-import {projectsService} from "../../../../init";
 import {ProjectCard} from "../../cards";
+import {filters, sorts} from "../../../API/query_builder/API_queries";
 
 const IdProjectPage = () => {
     const {id} = useParams<{id:string}>();
@@ -25,12 +24,6 @@ const IdProjectPage = () => {
 };
 
 const FetchingProjectContent = ({id}: { id: number }) => {
-    const [item, setItem] = useState({} as Project);
-
-    function useFetchItemCallback() {
-        return useFetchItem(id, setItem, projectsService);
-    }
-
     const creator = (project: Project) => (
         <>
             <ProjectCard item={project}/>
@@ -38,13 +31,13 @@ const FetchingProjectContent = ({id}: { id: number }) => {
         </>
     );
 
-    return <FetchingComponent componentCreator={creator} props={item} useCallback={useFetchItemCallback}/>
+    return <FetchingItemContent itemType={ItemType.Project} componentCreator={creator} id={id}/>
 }
 
 const ProjectNews = ({id}: { id: number }) => {
-    const newsQueryBuilder = new APIQueryBuilder({_page: 1, _limit: 10});
-    newsQueryBuilder.addSort(sorts.byDate("desc"));
-    newsQueryBuilder.addFilter(newsFilters.byProject(id));
+    const newsQueryBuilder = new APIQueryBuilder()
+        .addSort(sorts.byDate("desc"))
+        .addFilter(filters.newsFilters.byProject(id));
 
     return (
         <FetchingFeed itemType={ItemType.News} queryBuilder={newsQueryBuilder}/>

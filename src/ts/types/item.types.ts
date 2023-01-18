@@ -1,13 +1,13 @@
-import {ArticleCard, CardProps, NewsCard, ProjectCard} from "../components/cards";
-import {HasId, Article, Project, News} from "./models";
-import {ArticlesService, IService, NewsService, ProjectsService} from "../API/services";
+import {PostCard, CardProps, NewsCard, ProjectCard} from "../components/cards";
+import {HasId, Post, Project, News} from "./models";
+import {PostsService, IService, NewsService, ProjectsService} from "../API/services";
 
 type CardCreator<T> = (props: CardProps<T>) => JSX.Element;
 
 export class ItemType<T extends HasId> {
     private static AllValues: { [name: string]: any } = {};
 
-    static readonly Article= new ItemType<Article>(ArticleCard, new ArticlesService(), "Article");
+    static readonly Post= new ItemType<Post>(PostCard, new PostsService(), "Post");
     static readonly Project = new ItemType<Project>(ProjectCard, new ProjectsService(), "Project");
     static readonly News = new ItemType<News>(NewsCard, new NewsService(), "News");
 
