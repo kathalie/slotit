@@ -1,28 +1,33 @@
-import React, {useState} from 'react';
-import {FetchingFeed} from "../../FetchingComponent";
-import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
+import React from 'react';
+import {FetchingLazyLoadingFeed} from "../../FetchingComponent";
 import {ItemType} from "../../../types/item.types";
 import {APIFilter} from "../../../API/query_builder/queries.types";
+import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
+import {sorts} from "../../../API/query_builder/API_queries";
 
 export type PostPageProps = {
     filter?: APIFilter;
 }
 
 const PostsPage = ({filter}: PostPageProps) => {
-    const [page, setPage] = useState(1);
+    let qb = new APIQueryBuilder()
+        .setLimit(5)
+        .setSort(sorts.byDate("desc"))
+        .removeAllFilters();
 
-    const queryBuilder = new APIQueryBuilder()
-        .setPage(page);
-    if(filter) queryBuilder.addFilter(filter);
-
-    //TODO update querybuilder when changes in filters
+    qb = filter ?
+        qb.addFilter(filter).updated() :
+        qb.updated();
 
     return (
         <div>
-            <h1>Статті</h1>
-            {/*<Filters queries={queries} setQueries={setQueries}/>*/} // TODO!!!!!!!!!!!
-            <FetchingFeed itemType={ItemType.Post} queryBuilder={queryBuilder} deps={[queryBuilder]}/>
-
+            <h1>Пости</h1>
+            <FetchingLazyLoadingFeed itemType={ItemType.Post}
+                                     qb={qb}
+                                     deps={[qb]}
+                                     filters={!filter}
+                                     filter={filter}
+            />
         </div>
     );
 };

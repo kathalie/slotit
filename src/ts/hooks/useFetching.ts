@@ -4,12 +4,11 @@ import {IService} from "../API/services";
 import {IQueryBuilder} from "../API/query_builder/APIQueryBuilder";
 import {HasId} from "../types/models";
 
-const useFetching = (
-    setIsLoading: Callback,
-    setError: Callback,
-    callback: Callback
-): Callback => {
-    return async (...args: any[]) => {
+const useFetch  = (callback: Callback, deps?: any[]): [boolean, unknown] => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState('');
+
+    const fetching = async (...args: any[]) => {
         try {
             setIsLoading(true)
             await callback(...args);
@@ -19,13 +18,6 @@ const useFetching = (
             setIsLoading(false);
         }
     };
-};
-
-const useBaseFetch  = (callback: Callback, deps?: any[]): [boolean, unknown] => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState('');
-
-    const fetching = useFetching(setIsLoading, setError, callback);
 
     useEffect(() => {
         fetching();
@@ -34,24 +26,28 @@ const useBaseFetch  = (callback: Callback, deps?: any[]): [boolean, unknown] => 
     return [isLoading, error];
 }
 
-export const useFetchItems = <T extends HasId>(previousItems: T[], updateItems: Callback, service: IService<T>,
-                                 queryBuilder: IQueryBuilder, deps?: any[]): [boolean, unknown] => {
+export const useFetchItems = <T extends HasId>(updateItems: Callback, service: IService<T>, qb: IQueryBuilder,
+                                        deps: any[] = [], previousItems: T[] = []): [boolean, unknown] => {
 
     const callback = async () => {
-        const fetchedResponse = (await service.getByQuery(queryBuilder)).data;
-        updateItems([...previousItems, ...fetchedResponse]);
+        const fetchedResponse = (await service.getByQuery(qb));
+
+        const totalCount = (fetchedResponse.headers["x-total-count"] ?? -1) as number;
+        qb.setTotalPages(Math.ceil(totalCount / qb.pagination._limit));
+
+        updateItems( [...previousItems, ...fetchedResponse.data]);
     };
 
-    return useBaseFetch(callback, deps);
+    return [...useFetch(callback, deps ?? [])];
 
 };
 
 export const useFetchItem = <T extends HasId>(id: number, setItem: Callback, service: IService<T>,
-                                deps?: any[]): [boolean, unknown] => {
+                                deps: any[] = []): [boolean, unknown] => {
 
     const callback = async () => {
         setItem((await service.getById(id)).data);
     };
 
-    return useBaseFetch(callback, deps);
+    return useFetch(callback, deps);
 }

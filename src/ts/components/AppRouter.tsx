@@ -7,13 +7,10 @@ import MainNavigation from "./UI/MainNavigation";
 const AppRouter = () => {
     return (
         <div>
-            <MainNavigation/>
             <Routes>
                 {allLinksToPages.map(
                     (link: LinkToPage) => {
-                        const component = link.component(link.params ?? {});
-                        //console.log(link.link)
-                        return (<Route path={link.link as string} element={component} key={link.link as string}/>);
+                        return (<Route path={link.link as string} element={<link.component {...link.params}/>} key={link.link as string}/>);
                     }
                 )}
             </Routes>

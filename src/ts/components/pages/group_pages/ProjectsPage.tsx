@@ -6,14 +6,13 @@ import {ItemType} from "../../../types/item.types";
 const ProjectsPage = () => {
     const [page, setPage] = useState(1);
 
-    const queryBuilder = new APIQueryBuilder()
-        .setPage(page);
+    const qb = new APIQueryBuilder().setPage(page);
 
 
     return (
         <div>
             <h1>Проекти</h1>
-            <FetchingFeed itemType={ItemType.Project} queryBuilder={queryBuilder}/>
+            <FetchingFeed itemType={ItemType.Project} qb={qb}/>
         </div>
     );
 };

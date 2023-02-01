@@ -3,7 +3,7 @@ import {APIFilter, APIRange, APISort, SortOrder} from "./queries.types";
 
 export const filters = {
     postFilters: {
-        byType: (postType: PostType): APIFilter => function typeFilter() {
+        byType: (postType: PostType | "all"): APIFilter => function typeFilter() {
             return {field: "type", value: postType};
         }
     },
@@ -29,13 +29,10 @@ export const ranges = {
 }
 
 export const sorts = {
-    byType: (order: SortOrder): APISort => function topicSort() {
-        return {_sort: "type", _order: order};
-    },
-    byTitle: (order: SortOrder): APISort => function topicSort() {
+    byTitle: (order: SortOrder): APISort => function titleSort() {
         return {_sort: "title", _order: order};
     },
-    byDate: (order: SortOrder): APISort => function topicSort() {
+    byDate: (order: SortOrder): APISort => function dateSort() {
         return {_sort: "date", _order: order};
     }
 }

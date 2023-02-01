@@ -17,15 +17,20 @@ export type LinkToPage = {
 
 export const dropdown: LinkToPage[] = [
     {
+        link: "/posts",
+        component: PostsPage,
+        caption: "Всі пости"
+    },
+    {
         link: "/posts/blog",
         component: PostsPage,
-        params: filters.postFilters.byType("blog"),
+        params: {filter: filters.postFilters.byType("blog")},
         caption: "Наш блог"
     },
     {
-        link: "/posts/translations",
+        link: "/posts/translation",
         component: PostsPage,
-        params: filters.postFilters.byType("translation"),
+        params: {filter: filters.postFilters.byType("translation")},
         caption: "Переклади статей українською"
     },
 ]

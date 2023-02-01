@@ -22,11 +22,11 @@ const MainPage = () => {
         <div>
             <MainCarousel/>
             <h1>Останні пости</h1>
-            <FetchingFeed itemType={ItemType.Post} queryBuilder={postsQB}/>
+            <FetchingFeed itemType={ItemType.Post} qb={postsQB}/>
             <h1>Готові круті проекти</h1>
-            <FetchingFeed itemType={ItemType.Project} queryBuilder={projectsQB}/>
+            <FetchingFeed itemType={ItemType.Project} qb={projectsQB}/>
             <h1>Слідкуйте за роботою</h1>
-            <FetchingSpecificCard itemType={ItemType.Project} queryBuilder={projectInProcessQB}/>
+            <FetchingSpecificCard itemType={ItemType.Project} qb={projectInProcessQB}/>
         </div>
     );
 };

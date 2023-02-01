@@ -1,35 +1,73 @@
-import {APIFilter, APIRange, APISort, PaginationProps} from "./queries.types";
+import {APIFilter, APIRange, APISort, PaginationProps, SortOrder} from "./queries.types";
+import Sort from "../../components/queries/Sort";
 
 export interface IQueryBuilder {
+    totalPages: number;
+    pagination: PaginationProps;
+    filters: APIFilter[];
+    ranges: APIRange[];
+    sorts: APISort[];
+    searchQuery: string;
+
+    updated(): IQueryBuilder;
+
+    setTotalPages(totalPages: number): IQueryBuilder;
+
     setPage(page: number): IQueryBuilder;
+
     setLimit(limit: number): IQueryBuilder;
+
+    setSearchQuery(query: string): IQueryBuilder;
+
+    unsetSearchQuery(): IQueryBuilder;
+
     addFilter(filter: APIFilter): IQueryBuilder;
+
     removeFilter(filter: APIFilter): IQueryBuilder;
+
+    removeAllFilters(): IQueryBuilder;
+
+    setFilter(filter: APIFilter): IQueryBuilder;
+
     addSort(sort: APISort): IQueryBuilder;
+
+    setSort(sort: APISort): IQueryBuilder;
+
     removeSort(sort: APISort): IQueryBuilder;
+
+    removeAllSorts(): IQueryBuilder;
+
     addRange(range: APIRange): IQueryBuilder;
+
     removeRange(range: APIRange): IQueryBuilder;
+
+    getFilterValue(filter: APIFilter): string | undefined;
+
+    getSortOrder(sort: APISort): SortOrder | undefined;
+
     getQueryParams(): object;
 }
 
-export class APIQueryBuilder implements IQueryBuilder{
+export class APIQueryBuilder implements IQueryBuilder {
+    public totalPages: number = -1;
     public pagination: PaginationProps = {_page: 1, _limit: 10};
     public filters: APIFilter[] = [];
     public ranges: APIRange[] = [];
     public sorts: APISort[] = [];
+    public searchQuery: string = "";
 
-    constructor() {
-        return this;
-    }
-
-    public setPage(page: number): APIQueryBuilder {
-        this.pagination._page = page;
+    constructor(qb?: APIQueryBuilder) {
+        if (qb) Object.assign(this, qb);
 
         return this;
     }
 
-    public setLimit(limit: number): APIQueryBuilder {
-        this.pagination._limit = limit;
+    public updated(): APIQueryBuilder {
+        return new APIQueryBuilder(this);
+    }
+
+    private set<T>(what: T, how: (what: T) => void): APIQueryBuilder {
+        how(what);
 
         return this;
     }
@@ -48,12 +86,42 @@ export class APIQueryBuilder implements IQueryBuilder{
         return this;
     }
 
+    public setTotalPages(totalPages: number): APIQueryBuilder {
+        return this.set(totalPages, (n) => this.totalPages = n);
+    }
+
+    public setPage(page: number): APIQueryBuilder {
+        return this.set(page, (_page) => this.pagination._page = _page);
+    }
+
+    public setLimit(limit: number): APIQueryBuilder {
+        return this.set(limit, (_limit) => this.pagination._limit = _limit);
+    }
+
+    public setSearchQuery(query: string): APIQueryBuilder {
+        return this.set(query, (_query) => this.searchQuery = _query);
+    }
+
+    public unsetSearchQuery(): APIQueryBuilder {
+        return this.set("", (_query) => this.searchQuery = _query);
+    }
+
     public addFilter(filter: APIFilter): APIQueryBuilder {
         return this.add(filter, this.filters);
     }
 
     public removeFilter(filter: APIFilter): APIQueryBuilder {
         return this.remove(filter, this.filters);
+    }
+
+    public removeAllFilters(): APIQueryBuilder {
+        this.filters = [];
+
+        return this;
+    }
+
+    public setFilter(filter: APIFilter): APIQueryBuilder {
+        return this.removeAllFilters().addFilter(filter);
     }
 
     public addSort(sort: APISort): APIQueryBuilder {
@@ -64,6 +132,16 @@ export class APIQueryBuilder implements IQueryBuilder{
         return this.remove(sort, this.sorts);
     }
 
+    public removeAllSorts(): APIQueryBuilder {
+        this.sorts = [];
+
+        return this;
+    }
+
+    public setSort(sort: APISort): APIQueryBuilder {
+        return this.removeAllSorts().addSort(sort);
+    }
+
     public addRange(range: APIRange): APIQueryBuilder {
         return this.add(range, this.ranges);
     }
@@ -72,9 +150,18 @@ export class APIQueryBuilder implements IQueryBuilder{
         return this.remove(range, this.ranges);
     }
 
+    public getFilterValue(filter: APIFilter): string | undefined {
+        return this.filters.find(f => f.name === filter.name)?.().value;
+    }
+
+    public getSortOrder(sort: APISort): SortOrder | undefined {
+        return this.sorts.find(f => f.name === sort.name)?.()._order;
+    }
+
     public getQueryParams(): object {
         const params: any = {
             _limit: this.pagination._limit,
+            _page: this.pagination._page
         }
 
         if (this.sorts.length > 0) {
