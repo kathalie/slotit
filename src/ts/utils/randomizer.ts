@@ -15,3 +15,7 @@ export function getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min) + min);
     // The maximum is exclusive and the minimum is inclusive
 }
+
+export function getRandomBoolean() {
+    return getRandomInt(0, 2) === 0;
+}

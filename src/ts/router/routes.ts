@@ -7,28 +7,42 @@ import MainPage from "../components/pages/MainPage";
 import IdNewsPage from "../components/pages/individual_pages/IdNewsPage";
 import IdPostPage from "../components/pages/individual_pages/IdArticlePage";
 import {filters} from "../API/query_builder/API_queries";
+import {APIFilter} from "../API/query_builder/queries.types";
 
 export type LinkToPage = {
     link: string | LinkToPage[],
     component: (params?: any) => JSX.Element,
-    params?: any,
+    params?: { filter: APIFilter },
     caption?: string,
+}
+
+export const links = {
+    posts:  "/posts",
+    blog: "/posts/blog",
+    translations: "/posts/translation",
+    main: "/",
+    news: "/news",
+    projects: "/projects",
+    aboutUs: "/about_us",
+    projectId: "/projects/:id",
+    postId: "/posts/:id",
+    newsId: "/news/:id"
 }
 
 export const dropdown: LinkToPage[] = [
     {
-        link: "/posts",
+        link: links.posts,
         component: PostsPage,
         caption: "Всі пости"
     },
     {
-        link: "/posts/blog",
+        link: links.blog,
         component: PostsPage,
         params: {filter: filters.postFilters.byType("blog")},
         caption: "Наш блог"
     },
     {
-        link: "/posts/translation",
+        link: links.translations,
         component: PostsPage,
         params: {filter: filters.postFilters.byType("translation")},
         caption: "Переклади статей українською"
@@ -36,17 +50,33 @@ export const dropdown: LinkToPage[] = [
 ]
 
 export const navigation: LinkToPage[] = [
-    {link: "/", component: MainPage, caption: "Головна"},
-    {link: "/news", component: NewsPage, caption: "Новини"},
+    {link: links.main, component: MainPage, caption: "Головна"},
+    {link: links.news, component: NewsPage, caption: "Новини"},
     {link: Object.values(dropdown), component: PostsPage, caption: "Пости"},
-    {link: "/projects", component: ProjectsPage, caption: "Проекти"},
-    {link: "/about_us", component: AboutUsPage, caption: "Про нас"},
+    {link: links.projects, component: ProjectsPage, caption: "Проекти"},
+    {link: links.aboutUs, component: AboutUsPage, caption: "Про нас"},
 ]
 
 export const idPages: LinkToPage[] = [
-    {link: "/projects/:id", component: IdProjectPage},
-    {link: "/news/:id", component: IdNewsPage},
-    {link: "/posts/:id", component: IdPostPage},
+    {link: links.projectId, component: IdProjectPage},
+    {link: links.newsId, component: IdNewsPage},
+    {link: links.postId, component: IdPostPage},
 ];
 
 export const allLinksToPages: LinkToPage[] = [...dropdown, ...(navigation.filter(link => !Array.isArray(link.link))), ...idPages];
+
+
+export type CarouselItem = {
+    caption: string,
+    link: string,
+    src: string
+}
+
+const randomPhotoLink = "https://picsum.photos/800/600?random=";
+
+export const carouselItems: CarouselItem[] = [
+    {caption: "Наш блог", link: links.blog, src: `${randomPhotoLink}1`},
+    {caption: "Переклади популярних IT-статей українською!", link: links.translations, src: `${randomPhotoLink}2`},
+    {caption: "Наші розробки", link: links.projects, src: `${randomPhotoLink}3`},
+    {caption: "Дізнайся більше про нас!", link: links.aboutUs, src: `${randomPhotoLink}4`},
+]

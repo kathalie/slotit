@@ -1,13 +1,16 @@
 import React from 'react';
 import {Callback} from "../../../types/callback.type";
 
-const DotButton = ({defaultIndex, setIndex}: {defaultIndex: number, setIndex: Callback}) => {
+const CarouselIndicator = ({defaultIndex, setIndex, className}: {
+    defaultIndex: number,
+    setIndex: Callback,
+    className: string
+}) => {
     return (
-        <button className="DotButton" onClick={() => {
-            setIndex(defaultIndex);
-            
-        }}></button>
+        <button className={`CarouselIndicator ${className}`} onClick={() => setIndex(defaultIndex)}>
+
+        </button>
     );
 };
 
-export default DotButton;
+export default CarouselIndicator;

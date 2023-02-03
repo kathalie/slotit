@@ -1,9 +1,10 @@
 import React from 'react';
 import MainCarousel from "../UI/MainCarousel";
-import {FetchingFeed, FetchingSpecificCard} from "../FetchingComponent";
 import {APIQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../types/item.types";
 import {filters, sorts} from "../../API/query_builder/API_queries";
+import {FetchingFeed} from "../fetching_components/fetching_feeds";
+import {FetchingSpecificCard} from "../fetching_components/fetching_single_components";
 
 const MainPage = () => {
     const postsQB = new APIQueryBuilder()

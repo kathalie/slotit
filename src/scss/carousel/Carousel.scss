@@ -1,17 +1,25 @@
 @import "../common";
 @import "../constants/fonts";
+@import "../constants/colors";
 
 .Carousel {
   position: relative;
   overflow: hidden;
+  height: 75vh;
 
   background: #222;
-  color: white;
+  color: $controls;
 
   .scroller {
+    height: 100%;
     white-space: nowrap;
     transition: transform 0.3s;
+  }
 
+  .indicators {
+    @include absolute_horizontally_centered;
+
+    bottom: 30px;
   }
 }
 
@@ -19,26 +27,44 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  height: 100%;
+  width: 100%;
+}
+
+.CarouselIndicator {
+  @include round_button(5px, $controls);
+
+  border: none;
+  margin: 0 7px;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.active {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid $controls;
 }
 
 .CarouselControl {
   @include transparent_button(100pt);
-}
+  @include absolute_vertically_centered;
 
-$side_margin: 10px;
-
-.left-control, .right-control {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
   z-index: 1;
+  text-align: center;
 
-  opacity: 70%;
-  font-family: $main_font;
+  opacity: 0.7;
+  font-family: $serif_font;
   text-shadow: 1px 1px 2px black;
+
+  &:hover {
+    opacity: 1;
+  }
 }
+
+$side_margin: 15px;
 
 .left-control {
   left: $side_margin;
@@ -48,27 +74,3 @@ $side_margin: 10px;
   right: $side_margin;
 }
 
-//.carousel {
-//  .carousel-item {
-//    width: 90%;
-//    position: relative;
-//    img {
-//      @include centralize_image;
-//
-//      width: 90%;
-//      height: 100%;
-//      object-fit: cover;
-//      position: relative;
-//    }
-//
-//    a {
-//      position: absolute;
-//      margin-left: auto;
-//      margin-right: auto;
-//      left: 0;
-//      right: 0;
-//    }
-//  }
-//
-//  //height: 50vh;
-//}

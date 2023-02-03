@@ -1,0 +1,71 @@
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+@mixin centralize_image() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin align_flex($direction: row, $justify: normal, $items: normal, $content: normal, $text: left) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $items;
+  align-content: $content;
+  text-align: $text;
+}
+
+@mixin horizontal_list($justify: center) {
+  @include align_flex(row, $justify);
+
+  list-style: none;
+}
+
+@mixin grid($columns_large: auto, $columns_medium: auto, $columns_small: auto) {
+  display: grid;
+  grid-template-columns: repeat($columns_large, auto);
+  grid-template-rows: auto;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat($columns_medium, auto);
+  }
+
+  @media screen and (max-width: 540px) {
+    grid-template-columns: repeat($columns_small, auto);
+  }
+}
+
+@mixin transparent_button($font-size: 20, $color: white) {
+  border: unset;
+  outline: unset;
+  background-color: transparent;
+  color: $color;
+  font-size: $font-size;
+}
+
+@mixin round_button($size, $color) {
+  border-radius: 50%;
+  background-color: $color;
+  padding: $size;
+}
+
+@mixin absolute_horizontally_centered() {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+@mixin absolute_vertically_centered() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+

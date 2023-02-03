@@ -1,24 +1,22 @@
 import React from 'react';
-import Carousel from 'better-react-carousel'
 import {Link} from "react-router-dom";
-
-//TODO REFACTOR!!!!!!!
-const carouselItems = [
-    {caption: "Наш блог", link: "/posts/blog", src: "https://picsum.photos/800/600?random=1"},
-    {caption: "Переклади популярних IT-статей", link: "/posts/translations", src: "https://picsum.photos/800/600?random=2"},
-    {caption: "Наші розробки", link: "/projects", src: "https://picsum.photos/800/600?random=3"},
-    {caption: "Дізнайся більше про нас!", link: "/aboutUs", src: "https://picsum.photos/800/600?random=4"},
-]
+import Carousel from "./carousel/Carousel";
+import CarouselItem from "./carousel/CarouselItem";
+import {carouselItems} from "../../router/routes";
 
 const MainCarousel = () => {
     return (
-        <Carousel cols={1} rows={1} loop autoplay={10000} showDots>
+        <Carousel className="MainCarousel">
             {
                 carouselItems.map(item =>
-                    <Carousel.Item key={item.link}>
-                        <img width="100%" src={item.src} alt={`Image for ${item.caption} link`}/>
-                        <Link to={item.link}>{item.caption}</Link>
-                    </Carousel.Item>
+                    <CarouselItem className="MainCarouselItem" key={item.link} width="90%">
+                        <img src={item.src} alt={`Image for ${item.caption} link`}/>
+                        <div className="info">
+                            <p>{item.caption}</p>
+                            <hr/>
+                            <Link to={item.link}>Дізнатись більше</Link>
+                        </div>
+                    </CarouselItem>
                 )
             }
         </Carousel>

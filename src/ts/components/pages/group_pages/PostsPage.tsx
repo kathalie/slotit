@@ -1,9 +1,9 @@
 import React from 'react';
-import {FetchingLazyLoadingFeed} from "../../FetchingComponent";
 import {ItemType} from "../../../types/item.types";
 import {APIFilter} from "../../../API/query_builder/queries.types";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {sorts} from "../../../API/query_builder/API_queries";
+import {FetchingLazyLoadingFeed} from "../../fetching_components/fetching_feeds";
 
 export type PostPageProps = {
     filter?: APIFilter;

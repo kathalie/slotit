@@ -1,0 +1,12 @@
+@import "constants/fonts";
+
+body {
+  font-family: $sans-serif_font;
+}
+
+h1 {
+  font-family: $serif_font;
+  font-size: 36pt;
+
+  margin: 70px 0 40px 0;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
-import {FetchingFeed} from "../../FetchingComponent";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../../types/item.types";
+import {FetchingFeed} from "../../fetching_components/fetching_feeds";
 
 const NewsPage = () => {
     const qb = new APIQueryBuilder();

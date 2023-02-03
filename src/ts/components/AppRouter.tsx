@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Route, Routes} from 'react-router-dom';
 import {allLinksToPages, LinkToPage} from "../router/routes";
-import MainNavigation from "./UI/MainNavigation";
 
 const AppRouter = () => {
     return (

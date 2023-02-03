@@ -2,25 +2,28 @@ export type HasId = {
     id: number
 };
 
+type HasPicture = {
+    smallPicture: string,
+    largePicture: string
+}
+
 type CommonStructure = {
     title: string,
     description: string,
     content: string,
 }
 
-export type Project = HasId & CommonStructure & {
+export type Project = HasId & CommonStructure & HasPicture & {
     inProcess: boolean
 };
 
-export type News = HasId & CommonStructure & {
+export type News = HasId & CommonStructure & HasPicture & {
     date: Date,
-    pictureThumbnail: string,
     project_id: number
 };
 
-export type Post = HasId & CommonStructure & {
+export type Post = HasId & CommonStructure & HasPicture & {
     date: Date,
-    pictureThumbnail: string,
     type: PostType,
 };
 

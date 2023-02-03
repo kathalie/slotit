@@ -1,11 +1,12 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 import {Project} from "../../../types/models";
-import {FetchingFeed, FetchingItemContent} from "../../FetchingComponent";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../../types/item.types";
 import {ProjectCard} from "../../cards";
 import {filters, sorts} from "../../../API/query_builder/API_queries";
+import {FetchingFeed} from "../../fetching_components/fetching_feeds";
+import {FetchingItemContent} from "../../fetching_components/fetching_single_components";
 
 const IdProjectPage = () => {
     const {id} = useParams<{id:string}>();
