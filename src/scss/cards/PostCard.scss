@@ -10,7 +10,7 @@ $picture_width: 300px;
   @include left_post;
 
   border-bottom: 1px dashed $dark_grey;
-  width: 60%;
+  width: 100%;
 
   .LinkedCard {
     height: $picture_width;

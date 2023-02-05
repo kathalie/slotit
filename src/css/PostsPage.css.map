@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"PostsPage.css"}
+{"version":3,"sourceRoot":"","sources":["../scss/common.scss","../scss/pages/PostsPage.scss"],"names":[],"mappings":"AAAA;EACE;;;AAGF;EACE;;;ACHF;EDaE;EACA,gBCboB;EDcpB,iBCd4B;EDe5B,aCfoC;EDgBpC,eChB4C;EDiB5C,YCjBoD;EAEpD;;AAEA;EACE;EACA","file":"PostsPage.css"}

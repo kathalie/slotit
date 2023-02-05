@@ -27,6 +27,7 @@ const PostsPage = ({filter}: PostPageProps) => {
                                      deps={[qb]}
                                      filters={!filter}
                                      filter={filter}
+                                     className="posts"
             />
         </div>
     );

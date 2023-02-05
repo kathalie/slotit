@@ -1,3 +1,54 @@
-.PostsPage {
+@import "../common";
+@import "../cards/PostCardMixins";
+@import "../constants/fonts";
+@import "../constants/colors";
 
+.PostsPage {
+  @include align_flex(column, center, center, center, center);
+
+  width: 100%;
+
+  .posts {
+    width: 60%;
+
+    .PostCard {
+      @include left_post;
+    }
+  }
+
+  .queries {
+    @include align_flex(row);
+
+    border: 1px dashed $dark_grey;
+    padding: 10px 0;
+    margin-bottom: 20px;
+
+    label {
+      @include align_flex(column, center);
+
+      width: 50%;
+
+      padding: 20px 0;
+
+      text-align: center;
+      font-size: 18pt;
+      font-family: $serif_font;
+    }
+
+    .filters, .sorts {
+      select, button {
+        margin-top: 15px;
+        height: 40px;
+        font-size: 14pt;
+      }
+    }
+
+    .filters {
+      display: inline-block;
+    }
+
+    .sorts {
+
+    }
+  }
 }

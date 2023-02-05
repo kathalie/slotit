@@ -3,45 +3,50 @@
 @import "../cards/PostCardMixins";
 
 .MainPage {
+  width: 100%;
+
   .main_container {
+    @include align_flex(column, center, center, center, center);
+
     width: 100%;
 
     .LearnMore {
       border-color: $dark_grey;
       margin-top: 20px;
     }
-  }
 
-  .recent_posts {
-    @include align_flex(column, center, center, center, center);
+    .recent_posts {
+      @include align_flex(column, center, center, center, center);
 
-    flex: 1 1 0;
 
-    .ExtendedPostCard {
-      &:nth-child(odd) {
-        @include left_post;
-      }
+      width: 60%;
 
-      &:nth-child(even) {
-        @include right_post;
+      .ExtendedPostCard {
+        &:nth-child(odd) {
+          @include left_post;
+        }
+
+        &:nth-child(even) {
+          @include right_post;
+        }
       }
     }
-  }
 
-  .best_projects {
-    @include align_flex(row, center, center, center, center);
-  }
+    .best_projects {
+      @include align_flex(row, center, center, center, center);
+    }
 
-  .project_in_process {
-    @include align_flex(row, space-evenly, center, center, center);
-  }
+    .project_in_process {
+      @include align_flex(row, space-evenly, center, center, center);
 
-  .project_in_process {
-    position: relative;
+      width: 100%;
 
-    .DynamicArrows span {
-      width: 30px;
-      height: 30px;
+      .DynamicArrows {
+        .AngleArrow {
+          width: 30px;
+          height: 30px;
+        }
+      }
     }
   }
 }

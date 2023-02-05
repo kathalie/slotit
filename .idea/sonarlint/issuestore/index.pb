@@ -16,10 +16,6 @@ j
 :src/ts/components/pages/individual_pages/IdArticlePage.tsx,6\5\65670ebe6d1d6ba8d56c4c425d9dabf8d7c05f77
 g
 7src/ts/components/pages/individual_pages/IdNewsPage.tsx,1\e\1e626c1248fa878106d6a471aa48ca4badbfda6c
-[
-+src/ts/components/queries/SortingButton.tsx,b\1\b1dcfef0dce42471bedad3f7ced4fc599c393c0b
-R
-"src/ts/components/queries/Sort.tsx,f\9\f9b02eb12f7981519d3d115651c57b09a6da7915
 P
  src/ts/components/Pagination.tsx,1\0\100fca93bfff91850b4c0e47aa2086a049fe0c25
 j
@@ -32,8 +28,6 @@ Y
 )src/ts/API/query_builder/queries.types.ts,7\1\71f9d958b7242bee2c7dfdd8dac07949ff19bc12
 Q
 !src/ts/components/LazyLoading.tsx,e\4\e47b6fa5db14fcf91491791b453ebd50a84064ba
-U
-%src/ts/components/queries/Filters.tsx,b\3\b34a6908ce77b89ed5866d6f7d9366ec5b083e77
 W
 'src/ts/API/query_builder/API_queries.ts,3\3\33f4fd0365715c5f2db0c91127f1c8b15480b754
 B
@@ -68,8 +62,6 @@ G
 src/scss/normalize.scss,0\4\04784f6c62410769dddcdcef0b5e47d405a040ef
 R
 "src/ts/components/UI/LearnMore.tsx,9\c\9c362408bed0fd31596147aab852ef683b2178b3
-G
-src/scss/LearnMore.scss,4\a\4a94b782e9dbb0ffd3447477b4f1e4d120403c3b
 Y
 )src/ts/components/ComponentController.tsx,6\3\63b8af9ac11636cddab56556ce8a2127596cb74d
 t
@@ -80,8 +72,6 @@ g
 7src/ts/components/UI/dynamic_elements/DynamicArrows.tsx,8\1\816b4682a2b11f74c16acc7d6e61340dbd7e52e2
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-H
-src/scss/AngleArrow.scss,5\e\5ef30a6f870a11a54b6a390e1e135d527dab82c3
 O
 src/scss/cards/ProjectCard.scss,6\9\69cb132be23daf2ec5f73ad6edebbf723f4acef6
 N

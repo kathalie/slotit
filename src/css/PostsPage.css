@@ -1,3 +1,23 @@
+.popup.hidden {
+  display: none;
+}
 
+:where(h1, h2) {
+  margin: 0;
+}
+
+.PostsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+}
+.PostsPage .posts {
+  width: 60%;
+  color: red;
+}
 
 /*# sourceMappingURL=PostsPage.css.map */

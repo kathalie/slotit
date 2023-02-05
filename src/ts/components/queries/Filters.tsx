@@ -20,12 +20,12 @@ const Filters = ({qb, setQb}:{
     }
 
     return (
-        <div>
+        <div className="queries">
             {/*<input type="text"*/}
             {/*       value={filter.query}*/}
             {/*       onChange={e => setFilter({...filter, query: e.target.value})}*/}
             {/*       placeholder="Пошук..."/>*/}
-            <label>
+            <label className="filters">
                 Тип постів:
                 <select
                     name="filter"
@@ -43,11 +43,10 @@ const Filters = ({qb, setQb}:{
                     }
                 </select>
             </label>
-            <label>
+            <label className="sorts">
                 Сортувати за:
                 <Sort qb={qb} setQb={setQb}/>
             </label>
-
         </div>
     );
 };
