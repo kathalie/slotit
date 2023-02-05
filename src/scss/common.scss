@@ -21,10 +21,26 @@
   text-align: $text;
 }
 
-@mixin horizontal_list($justify: center) {
-  @include align_flex(row, $justify);
+@mixin horizontal_list($justify: space-evenly) {
+  @include align_flex(row, $justify, center, center, center);
 
   list-style: none;
+}
+
+@mixin horizontal_divided_list($divider_color, $distance, $higher: 2px) {
+  @include horizontal_list(center);
+
+  margin: auto;
+
+  > li {
+    @include align_flex(column, center);
+
+    padding: $higher $distance;
+
+    &:not(&:last-child) {
+      border-right: 1px solid $divider_color;
+    }
+  }
 }
 
 @mixin grid($columns_large: auto, $columns_medium: auto, $columns_small: auto) {
@@ -69,3 +85,15 @@
   margin: auto 0;
 }
 
+@mixin absolute_overlay() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin scale_smoothly($scale_amount, $transition_amount: .1s) {
+  transition: all $transition_amount;
+  transform: scale($scale_amount);
+}

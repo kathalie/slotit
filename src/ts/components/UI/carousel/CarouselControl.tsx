@@ -5,14 +5,16 @@ export enum CarouselControlDirection {
     Left, Right
 }
 
-type DirectionProps = {
+type ArrowButtonProps = {
     direction: CarouselControlDirection;
-    caption: string;
+    caption: JSX.Element | string;
     calcIndex: (index: number) => number;
     className: string;
 }
 
-const directions: DirectionProps[] = [
+const controlsDirections: ArrowButtonProps[] = [
+    // {direction: CarouselControlDirection.Left, caption: <AngleArrow direction={directions.toLeft}/>, calcIndex: (index: number) => index - 1, className: "left-control"},
+    // {direction: CarouselControlDirection.Right, caption: <AngleArrow direction={directions.toRighty}/>, calcIndex: (index: number) => index + 1, className: "right-control"}
     {direction: CarouselControlDirection.Left, caption: "\u2039", calcIndex: (index: number) => index - 1, className: "left-control"},
     {direction: CarouselControlDirection.Right, caption: "\u203A", calcIndex: (index: number) => index + 1, className: "right-control"}
 ];
@@ -22,13 +24,13 @@ const CarouselControl = ({direction, index, updateIndex}: {
     index: number,
     updateIndex: Callback
 }) => {
-    const directionProps = directions.find(d => d.direction === direction) as DirectionProps;
+    const arrowButtonProps = controlsDirections.find(d => d.direction === direction) as ArrowButtonProps;
 
     return (
-        <button className={`CarouselControl ${directionProps.className}`}
-                onClick={() => updateIndex(directionProps.calcIndex(index))}
+        <button className={`CarouselControl ${arrowButtonProps.className}`}
+                onClick={() => updateIndex(arrowButtonProps.calcIndex(index))}
         >
-            {directionProps.caption}
+            {arrowButtonProps.caption}
         </button>
     );
 };

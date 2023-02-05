@@ -22,13 +22,14 @@ export const FetchingItemContent = <T extends HasId>({itemType, componentCreator
     return <FetchingComponent componentCreator={componentCreator ?? itemType.cardCreator} props={{item}}
                               fetchingHook={useFetchItemCallback}/>
 }
-export const FetchingSpecificCard = <T extends HasId>({itemType, qb, deps}: {
+export const FetchingSpecificCard = <T extends HasId>({className, itemType, qb, deps}: {
+    className?: string,
     itemType: ItemType<T>,
     qb: IQueryBuilder,
     deps?: any[]
 }) => {
     const [useCallback, items] = useFetchQueriedItems(itemType, qb, deps);
 
-    return <FetchingComponent componentCreator={itemType.cardCreator} props={{item: items[0]}}
+    return <FetchingComponent className={className} componentCreator={itemType.cardCreator} props={{item: items[0]}}
                               fetchingHook={useCallback}/>
 }

@@ -8,27 +8,30 @@ import Pagination from "./Pagination";
 type FeedProps<T extends HasId> = {
     items: T[]
     itemType: ItemType<T>,
+    componentCreator?: (props: {item: T}) => JSX.Element,
 }
 
-export const Feed = <T extends HasId>({items, itemType}: FeedProps<T>) => {
+export const Feed = <T extends HasId>({items, itemType, componentCreator}: FeedProps<T>) => {
     return (
-        <div>
+        <>
             {items.map((item: T) =>
-                <div key={item.id}>
-                    {itemType.cardCreator({item})}
-                </div>
+                <React.Fragment key={item.id}>
+                    {componentCreator ?
+                        componentCreator({item}) :
+                        itemType.cardCreator({item})}
+                </React.Fragment>
             )}
-        </div>
+        </>
     );
 };
 
-export const PaginationFeed = <T extends HasId>({items, itemType, qb, setQb}: FeedProps<T> & {
+export const PaginationFeed = <T extends HasId>({items, itemType, componentCreator, qb, setQb}: FeedProps<T> & {
     qb: IQueryBuilder,
     setQb: Callback
 }) => {
     return (
         <>
-            <Feed items={items} itemType={itemType}/>
+            <Feed items={items} itemType={itemType} componentCreator={componentCreator}/>
             <Pagination qb={qb} setQb={setQb} totalCount={qb.totalPages}/>
         </>
     );

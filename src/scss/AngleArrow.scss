@@ -1,0 +1,17 @@
+.AngleArrow {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+
+  transform: rotate(45deg);
+}
+
+.toLeft {
+  transform: rotate(90deg);
+}
+
+.toRight {
+  transform: rotate(-90deg);
+}

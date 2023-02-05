@@ -5,29 +5,51 @@ import {IQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
 import {useFetchQueriedItems} from "../../hooks/useFetchQueriedItems";
 import Filters from "../queries/Filters";
 import {Feed, PaginationFeed} from "../feeds";
-import React from "react";
+import React, {Children} from "react";
 import {Callback} from "../../types/callback.type";
 import LazyLoading from "../LazyLoading";
 import {FetchingComponent} from "./base_fetching";
 
-export const FetchingFeed = <T extends HasId>({itemType, qb, deps, filters}: {
+export const BaseFetchingFeed = ({className, children, qb, setQb, filters}: {
+    className?: string,
+    children: JSX.Element | JSX.Element[],
+    qb: IQueryBuilder,
+    setQb: Callback,
+    filters: boolean
+}) => {
+    return (
+        <div className={`BaseFetchingFeed ${className ?? ""}`}>
+            {
+                filters && <Filters qb={qb} setQb={setQb}/>
+            }
+            {
+                Children.map(children, child => React.cloneElement(child))
+            }
+        </div>
+    );
+}
+
+export const FetchingFeed = <T extends HasId>({className, itemType, componentCreator, qb, deps, filters = false}: {
+    className?: string,
     itemType: ItemType<T>,
     qb: IQueryBuilder,
+    componentCreator?: (props: {item: T}) => JSX.Element,
     deps?: any[],
-    filters?: boolean
+    filters?: boolean,
 }) => {
     const [useCallback, items, , setQb] = useFetchQueriedItems(itemType, qb, deps);
 
     return (
-        <>
-            {
-                filters && <Filters qb={qb} setQb={setQb}/>
-            }
-            <FetchingComponent componentCreator={Feed} props={{items, itemType}} fetchingHook={useCallback}/>
-        </>
+        <BaseFetchingFeed className={className} filters={filters} qb={qb} setQb={setQb}>
+            <FetchingComponent componentCreator={Feed}
+                               props={{items, itemType, componentCreator}}
+                               fetchingHook={useCallback}/>
+        </BaseFetchingFeed>
     )
 };
-export const FetchingPaginationFeed = <T extends HasId>({itemType, qb, setQb, deps, filters}: {
+
+export const FetchingPaginationFeed = <T extends HasId>({className, itemType, qb, setQb, deps, filters = false}: {
+    className?: string,
     itemType: ItemType<T>,
     qb: IQueryBuilder,
     setQb: Callback,
@@ -38,21 +60,22 @@ export const FetchingPaginationFeed = <T extends HasId>({itemType, qb, setQb, de
     const [useCallback, items,] = useFetchQueriedItems(itemType, qb, deps);
 
     return (
-        <>
-            {
-                filters && <Filters qb={qb} setQb={setQb}/>
-            }
+        <BaseFetchingFeed className={className} filters={filters} qb={qb} setQb={setQb}>
             <FetchingComponent componentCreator={PaginationFeed}
                                props={{items, itemType, qb, setQb}}
                                fetchingHook={useCallback}
             />
-        </>
+        </BaseFetchingFeed>
     )
 };
+
 let prevFilter: APIFilter | undefined | null = null;
-export const FetchingLazyLoadingFeed = <T extends HasId>({itemType, qb, deps, filters, filter}: {
+
+export const FetchingLazyLoadingFeed = <T extends HasId>({className, itemType, qb, componentCreator, deps, filters = false, filter}: {
+    className?: string,
     itemType: ItemType<T>,
     qb: IQueryBuilder,
+    componentCreator?: (props: {item: T}) => JSX.Element,
     deps?: any[],
     filters?: boolean,
     filter?: APIFilter
@@ -69,12 +92,9 @@ export const FetchingLazyLoadingFeed = <T extends HasId>({itemType, qb, deps, fi
     const [isLoading,] = useCallback();
 
     return (
-        <>
-            {
-                filters && <Filters qb={qb} setQb={setQb}/>
-            }
-            <Feed items={items} itemType={itemType}/>
+        <BaseFetchingFeed className={className} filters={filters} qb={qb} setQb={setQb}>
+            <Feed items={items} itemType={itemType} componentCreator={componentCreator}/>
             <LazyLoading isLoading={isLoading} qb={qb} setQb={setQb}/>
-        </>
+        </BaseFetchingFeed>
     )
 };

@@ -1,12 +1,23 @@
 @import "constants/fonts";
+@import "constants/colors";
+@import "common";
 
 body {
   font-family: $sans-serif_font;
+
+  @include align-flex(column, center, center, center, center);
 }
 
 h1 {
   font-family: $serif_font;
   font-size: 36pt;
+  font-weight: 300;
 
   margin: 70px 0 40px 0;
+}
+
+.main-hr {
+  width: 75%;
+  color: $dark_grey;
+  margin: 70px auto 10px auto;
 }

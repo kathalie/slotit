@@ -52,7 +52,7 @@ export const dropdown: LinkToPage[] = [
 export const navigation: LinkToPage[] = [
     {link: links.main, component: MainPage, caption: "Головна"},
     {link: links.news, component: NewsPage, caption: "Новини"},
-    {link: Object.values(dropdown), component: PostsPage, caption: "Пости"},
+    {link: dropdown, component: PostsPage, caption: "Пости"},
     {link: links.projects, component: ProjectsPage, caption: "Проекти"},
     {link: links.aboutUs, component: AboutUsPage, caption: "Про нас"},
 ]
@@ -63,8 +63,14 @@ export const idPages: LinkToPage[] = [
     {link: links.postId, component: IdPostPage},
 ];
 
-export const allLinksToPages: LinkToPage[] = [...dropdown, ...(navigation.filter(link => !Array.isArray(link.link))), ...idPages];
+export const flattenedNavigation = navigation.map((linkToPage: LinkToPage) => {
+    return Array.isArray(linkToPage.link) ?
+        linkToPage.link :
+        linkToPage
+}).flat();
 
+export const allLinksToPages: LinkToPage[] = [...flattenedNavigation, ...idPages];
+// export const allLinksToPages: LinkToPage[] = [...dropdown, ...(navigation.filter(link => !Array.isArray(link.link))), ...idPages];
 
 export type CarouselItem = {
     caption: string,

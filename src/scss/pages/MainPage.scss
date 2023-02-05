@@ -1,0 +1,37 @@
+@import "../constants/colors";
+@import "../common";
+
+.MainPage {
+  .main_container {
+    width: 100%;
+
+    .LearnMore {
+      border-color: $dark_grey;
+      margin-top: 20px;
+    }
+  }
+
+  .recent_posts {
+    @include align_flex(column, center, center, center, center);
+
+    flex: 1 1 0;
+  }
+
+  .best_projects {
+    @include align_flex(row, center, center, center, center);
+  }
+
+  .project_in_process {
+    @include align_flex(row, space-evenly, center, center, center);
+  }
+
+  .project_in_process {
+    position: relative;
+
+    .DynamicArrows span {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+

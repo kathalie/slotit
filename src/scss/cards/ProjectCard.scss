@@ -1,3 +1,41 @@
-.ProjectCard {
+@import "../common";
+@import "../constants/fonts";
 
+.ProjectCard {
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+  .picture_bg {
+    position: relative;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+
+    .summary {
+      @include align_flex(column, flex-end, flex-start);
+
+      height: 100%;
+      background-image: linear-gradient(to bottom, rgba(0,0,0,0), black);
+      padding: 20px;
+      color: white;
+
+      h2 {
+        font-size: 20pt;
+        margin-bottom: 20px;
+      }
+
+      .description {
+        font-family: $serif_font;
+        font-size: 14pt;
+      }
+    }
+  }
+
+  &:hover {
+    @include scale_smoothly(1.05);
+  }
 }

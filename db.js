@@ -1,7 +1,7 @@
 const {faker} = require("@faker-js/faker");
 
 function getPictures() {
-    const randomN = faker.datatype.number({min: 1, max: 1000})
+    const randomN = faker.datatype.number({min: 1, max: 100});
 
     return {
         smallPicture: `https://picsum.photos/id/${randomN}/300`,
@@ -14,12 +14,18 @@ function getContentAndDescription() {
 
     return {
         content,
-        description: `${content.slice(0, 20)}...`,
+        description: `${content.slice(0, 50)}...`,
     }
 }
 
 function getRandomDate() {
     return faker.date.between("2018-01-01", "2023-02-01");
+}
+
+function getRandomProjectTitle() {
+    const phrase = faker.hacker.noun();
+
+    return `${phrase[0].toUpperCase()}${phrase.slice(1)}`;
 }
 
 function mockPosts(n) {
@@ -50,7 +56,7 @@ function mockProjects(n) {
     for (let id = 0; id < n; id++) {
         projects.push({
             id,
-            title: faker.hacker.phrase(),
+            title: getRandomProjectTitle(),
             ...getContentAndDescription(),
             inProcess: id === idInProcess,
             ...getPictures()

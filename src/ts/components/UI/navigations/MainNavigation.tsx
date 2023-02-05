@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {LinkToPage, navigation} from "../../router/routes";
+import {LinkToPage, navigation} from "../../../router/routes";
 
 const MainNavigation = () => {
     return (

@@ -5,10 +5,8 @@
 .Carousel {
   position: relative;
   overflow: hidden;
-  height: 75vh;
 
   background: #222;
-  color: $controls;
 
   .scroller {
     height: 100%;
@@ -19,7 +17,7 @@
   .indicators {
     @include absolute_horizontally_centered;
 
-    bottom: 30px;
+    bottom: 40px;
   }
 }
 
@@ -44,7 +42,7 @@
 }
 
 .active {
-  background-color: rgba(0,0,0,0);
+  background-color: $transparent;
   border: 1px solid $controls;
 }
 
@@ -64,7 +62,7 @@
   }
 }
 
-$side_margin: 15px;
+$side_margin: 100px;
 
 .left-control {
   left: $side_margin;

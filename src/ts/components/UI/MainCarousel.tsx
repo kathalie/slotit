@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import Carousel from "./carousel/Carousel";
 import CarouselItem from "./carousel/CarouselItem";
 import {carouselItems} from "../../router/routes";
+import LearnMore from "./LearnMore";
 
 const MainCarousel = () => {
     return (
@@ -14,7 +15,7 @@ const MainCarousel = () => {
                         <div className="info">
                             <p>{item.caption}</p>
                             <hr/>
-                            <Link to={item.link}>Дізнатись більше</Link>
+                            <LearnMore link={item.link}/>
                         </div>
                     </CarouselItem>
                 )

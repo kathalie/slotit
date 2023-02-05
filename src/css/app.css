@@ -1,12 +1,24 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@300");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
 .lds-dual-ring {
   display: inline-block;
   width: 80px;
@@ -41,7 +53,7 @@
   margin: 0;
 }
 
-.App-header {
+.MainHeader {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -53,39 +65,41 @@
   font-weight: 300;
 }
 
-.MainNavigation ul {
+.MainNavigation > ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  list-style: none;
+  margin: auto;
+  padding-top: 10px;
+  font-size: 16pt;
+}
+.MainNavigation > ul > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: normal;
   align-content: normal;
   text-align: left;
-  list-style: none;
-  font-size: 16pt;
+  padding: 1px 25px;
 }
-.MainNavigation ul a {
-  padding: 0 24px 0 12px;
+.MainNavigation > ul > li:not(.MainNavigation > ul > li:last-child) {
+  border-right: 1px solid #999;
 }
-.MainNavigation ul li.major-link {
-  height: 50px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-.MainNavigation ul li.major-link:not(.MainNavigation ul li.major-link:last-child)::after {
-  content: "|";
-  font-size: 1.2em;
-  color: #999;
-}
-.MainNavigation ul li.major-link a:hover {
+.MainNavigation > ul li.major-link a:hover {
   color: #9b6ac5;
   font-weight: 500;
 }
-.MainNavigation ul .dropdown {
-  display: inline-block;
+.MainNavigation > ul li.major-link:has(.dropdown) {
   position: relative;
 }
-.MainNavigation ul .dropdown .dropdown-content {
+.MainNavigation > ul .dropdown {
+  display: inline-block;
+}
+.MainNavigation > ul .dropdown .dropdown-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,23 +108,27 @@
   text-align: left;
   display: none;
   position: absolute;
+  left: 0;
   background-color: #f1f1f1;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-.MainNavigation ul .dropdown > a::after {
+.MainNavigation > ul .dropdown .dropdown-content a {
+  padding: 0 24px 0 12px;
+}
+.MainNavigation > ul .dropdown > a::after {
   content: " ⯆";
   display: inline-block;
   color: #9b6ac5;
 }
-.MainNavigation ul .dropdown > a:hover:after {
+.MainNavigation > ul .dropdown > a:hover:after {
   transition: 1s ease-in-out;
   rotate: 180deg;
 }
-.MainNavigation ul .dropdown:hover .dropdown-content {
+.MainNavigation > ul .dropdown:hover .dropdown-content {
   display: block;
 }
-.MainNavigation ul .dropdown li {
+.MainNavigation > ul .dropdown li {
   padding: 15px 0;
   font-size: 0.85em;
   white-space: nowrap;
@@ -132,9 +150,7 @@ a.current {
 .Carousel {
   position: relative;
   overflow: hidden;
-  height: 75vh;
   background: #222;
-  color: #fff;
 }
 .Carousel .scroller {
   height: 100%;
@@ -146,7 +162,7 @@ a.current {
   left: 0;
   right: 0;
   margin: 0 auto;
-  bottom: 30px;
+  bottom: 40px;
 }
 
 .CarouselItem {
@@ -195,17 +211,20 @@ a.current {
 }
 
 .left-control {
-  left: 15px;
+  left: 100px;
 }
 
 .right-control {
-  right: 15px;
+  right: 100px;
+}
+
+.MainCarousel {
+  height: 85vh;
 }
 
 .MainCarouselItem {
   position: relative;
-  height: 100%;
-  width: 100%;
+  color: #fff;
 }
 .MainCarouselItem img {
   display: block;
@@ -233,30 +252,494 @@ a.current {
 .MainCarouselItem .info hr {
   width: 50%;
 }
-.MainCarouselItem .info a {
-  display: inline-block;
-  padding: 15px;
-  text-align: center;
+.MainCarouselItem .info .LearnMore {
   margin-top: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border: 1px dashed white;
-  border-radius: 30px;
-  font-family: "Raleway", sans-serif;
-  font-size: 12pt;
 }
-.MainCarouselItem .info a:hover {
-  transition: all 0.1s;
-  transform: scale(1.05);
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
 }
 
 body {
   font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
 }
 
 h1 {
   font-family: "Cormorant", serif;
   font-size: 36pt;
+  font-weight: 300;
   margin: 70px 0 40px 0;
+}
+
+.main-hr {
+  width: 75%;
+  color: #222;
+  margin: 70px auto 10px auto;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.PostCard {
+  border-bottom: 1px dashed #222;
+  width: 60%;
+}
+.PostCard .LinkedCard {
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  margin: 10px 0;
+}
+.PostCard .LinkedCard:hover {
+  transition: all 0.1s;
+  transform: scale(1.05);
+}
+.PostCard .LinkedCard img {
+  max-height: 100%;
+  line-height: 100%;
+  object-fit: cover;
+  position: absolute;
+  background-color: #222;
+}
+.PostCard .LinkedCard .brief_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  align-content: center;
+  text-align: left;
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 300px);
+  padding: 10px 0;
+}
+.PostCard .LinkedCard .brief_info .date {
+  text-align: left;
+  color: #444;
+}
+.PostCard .LinkedCard .brief_info h2 {
+  font-size: 20pt;
+  margin-bottom: 10px;
+}
+.PostCard .LinkedCard .brief_info .description {
+  font-family: "Cormorant", serif;
+  font-size: 18pt;
+}
+.PostCard:nth-child(odd) img {
+  left: 0;
+}
+.PostCard:nth-child(odd) .brief_info {
+  right: 0;
+  padding-left: 40px;
+  padding-right: 10px;
+}
+.PostCard:nth-child(even) img {
+  right: 0;
+}
+.PostCard:nth-child(even) .brief_info {
+  left: 0;
+  padding-right: 40px;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.ExtendedPostCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  align-content: center;
+  text-align: left;
+}
+.ExtendedPostCard:nth-child(odd) {
+  align-items: flex-start;
+}
+.ExtendedPostCard:nth-child(even) {
+  align-items: flex-end;
+}
+.ExtendedPostCard:nth-child(even) a {
+  padding-right: 20px;
+}
+.ExtendedPostCard a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: normal;
+  text-align: left;
+  margin: 20px 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 10pt;
+  color: #222;
+}
+.ExtendedPostCard a:hover {
+  transition: all 0.1s;
+  transform: scale(1.05);
+}
+.ExtendedPostCard a .DynamicArrows {
+  display: inline-block;
+  margin-left: 40px;
+}
+.ExtendedPostCard a .DynamicArrows .AngleArrow {
+  border-width: 1px;
+  width: 5px;
+  height: 5px;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.ProjectCard {
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.ProjectCard .picture_bg {
+  position: relative;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+}
+.ProjectCard .picture_bg .summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  align-content: normal;
+  text-align: left;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+  padding: 20px;
+  color: white;
+}
+.ProjectCard .picture_bg .summary h2 {
+  font-size: 20pt;
+  margin-bottom: 20px;
+}
+.ProjectCard .picture_bg .summary .description {
+  font-family: "Cormorant", serif;
+  font-size: 14pt;
+}
+.ProjectCard:hover {
+  transition: all 0.1s;
+  transform: scale(1.05);
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.LearnMore {
+  display: inline-block;
+  padding: 15px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px dashed white;
+  border-radius: 30px;
+  font-family: "Raleway", sans-serif;
+  font-size: 12pt;
+}
+.LearnMore:hover {
+  transition: all 0.1s;
+  transform: scale(1.05);
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.MainPage .main_container {
+  width: 100%;
+}
+.MainPage .main_container .LearnMore {
+  border-color: #222;
+  margin-top: 20px;
+}
+.MainPage .recent_posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  flex: 1 1 0;
+}
+.MainPage .best_projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.MainPage .project_in_process {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.MainPage .project_in_process {
+  position: relative;
+}
+.MainPage .project_in_process .DynamicArrows span {
+  width: 30px;
+  height: 30px;
+}
+
+.DynamicArrows .AngleArrow {
+  margin: -10px;
+  animation: animate 2s infinite;
+}
+.DynamicArrows .AngleArrow:nth-child(2) {
+  animation-delay: -0.2s;
+}
+.DynamicArrows .AngleArrow:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+}
+.AngleArrow {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  transform: rotate(45deg);
+}
+
+.toLeft {
+  transform: rotate(90deg);
+}
+
+.toRight {
+  transform: rotate(-90deg);
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.AboutUsPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: auto;
+  text-align: center;
+}
+.AboutUsPage .about-us-briefly {
+  width: 100%;
+  background-image: linear-gradient(to bottom right, #444, #222);
+  color: white;
+  padding: 10px 200px 70px;
+}
+.AboutUsPage .about-us-briefly hr {
+  width: 50%;
+  margin: auto;
+}
+.AboutUsPage .about-us-briefly p {
+  font-family: "Cormorant", serif;
+  font-size: 16pt;
+  padding: 20px 0;
+  font-weight: 100;
+  text-align: justify;
+}
+.AboutUsPage .our-team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  text-align: left;
+  width: 60%;
+  font-family: "Cormorant", serif;
+}
+.AboutUsPage .our-team .team-mate {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  text-align: left;
+  width: 100%;
+  margin: 20px 0;
+}
+.AboutUsPage .our-team .team-mate .photo {
+  display: flex;
+  flex-direction: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  text-align: left;
+  min-width: 300px;
+  min-height: 300px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 10px solid #222;
+  overflow: hidden;
+}
+.AboutUsPage .our-team .team-mate .photo img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+  color: white;
+  font-size: 2.5em;
+}
+.AboutUsPage .our-team .team-mate .summary {
+  margin: 40px;
+  width: 100%;
+}
+.AboutUsPage .our-team .team-mate .summary h2 {
+  font-size: 24pt;
+}
+.AboutUsPage .our-team .team-mate .summary hr {
+  color: #222;
+  width: 75%;
+  margin-bottom: 30px;
+}
+.AboutUsPage .our-team .team-mate .summary p {
+  font-size: 18pt;
+  color: #222;
+}
+.AboutUsPage .our-team .team-mate .contacts {
+  width: 100px;
+}
+.AboutUsPage .our-team .team-mate .contacts a {
+  margin: 20px;
+}
+.AboutUsPage .MapContainer {
+  width: 75%;
+  height: 500px;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.MainFooter {
+  margin-top: 30px;
+  padding: 50px 150px;
+  background-color: #222;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+}
+.MainFooter .FooterNavigation ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  list-style: none;
+  margin: auto;
+  font-size: 14px;
+}
+.MainFooter .FooterNavigation ul > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  align-content: normal;
+  text-align: left;
+  padding: 2px 20px;
+}
+.MainFooter .FooterNavigation ul > li:not(.MainFooter .FooterNavigation ul > li:last-child) {
+  border-right: 1px solid white;
+}
+.MainFooter .FooterNavigation ul li:hover {
+  font-weight: 300;
+}
+.MainFooter .additional {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: normal;
+  text-align: left;
+  padding-top: 20px;
+}
+.MainFooter .additional .social-media a {
+  display: inline-block;
+  padding: 10px;
+}
+.MainFooter .additional .social-media a img {
+  width: 25px;
+}
+.MainFooter .additional .social-media a img:hover {
+  transition: all 0.1s;
+  transform: scale(1.1);
 }
 
 /*# sourceMappingURL=app.css.map */

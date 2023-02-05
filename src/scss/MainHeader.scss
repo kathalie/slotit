@@ -1,7 +1,7 @@
 @import "common";
 @import "constants/colors";
 
-.App-header {
+.MainHeader {
   @include align_flex(row, space-between, center);
 
   padding: 30px 70px;
@@ -9,46 +9,39 @@
   font-weight: 300;
 }
 
-.MainNavigation ul {
-  @include horizontal_list(space-evenly);
+.MainNavigation > ul {
+  @include horizontal_divided_list(#999, 25px, 1px);
 
+  padding-top: 10px;
   font-size: 16pt;
 
-  a {
-    padding: 0 24px 0 12px;
-  }
-
   li.major-link {
-    height: 50px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-
-    &:not(&:last-child)::after {
-      content: '|';
-      font-size: 1.2em;
-      color: #999;
-    }
-
     a:hover {
       color: $light_purple;
       font-weight: 500;
     }
+
+    &:has(.dropdown) {
+      position: relative;
+    }
   }
 
   .dropdown {
-    //@include align_flex(column);
     display: inline-block;
-    position: relative;
 
     .dropdown-content {
       @include align_flex(column, center);
 
       display: none;
       position: absolute;
+      left: 0;
       background-color: #f1f1f1;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       z-index: 1;
+
+      a {
+        padding: 0 24px 0 12px;
+      }
     }
 
     > a::after {

@@ -1,3 +1,81 @@
-.PostCard {
+@import "../common";
+@import "../constants/colors";
+@import "../constants/fonts";
 
+$picture_width: 300px;
+
+.PostCard {
+  border-bottom: 1px dashed $dark_grey;
+  width: 60%;
+
+  .LinkedCard {
+    height: $picture_width;
+    display: flex;
+
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+    margin: 10px 0;
+
+    &:hover {
+      @include scale_smoothly(1.05);
+    }
+
+    img {
+      max-height: 100%;
+      line-height: 100%;
+      object-fit: cover;
+      position: absolute;
+      background-color: $dark_grey;
+    }
+
+    .brief_info {
+       @include align_flex(column, space-evenly, flex-start, center, left);
+
+       position: absolute;
+       height: 100%;
+       width: calc(100% - 300px); //300px - $picture_width !!!
+       padding: 10px 0;
+
+       .date {
+         text-align: left;
+         color: $medium_grey;
+       }
+
+       h2 {
+         font-size: 20pt;
+         margin-bottom: 10px;
+       }
+
+       .description {
+         font-family: $serif_font;
+         font-size: 18pt;
+       }
+     }
+  }
+
+  $horizontal_padding: 40px;
+
+  &:nth-child(odd) {
+    img {
+      left: 0;
+    }
+
+    .brief_info {
+      right: 0;
+      padding-left: $horizontal_padding;
+      padding-right: 10px;
+    }
+  }
+
+  &:nth-child(even) {
+    img {
+      right: 0;
+    }
+
+    .brief_info {
+      left: 0;
+      padding-right: $horizontal_padding;
+    }
+  }
 }

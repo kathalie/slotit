@@ -2,7 +2,8 @@ import {HasId} from "../../types/models";
 import ComponentController from "../ComponentController";
 import React from "react";
 
-export const FetchingComponent = <T extends HasId>({componentCreator, props, fetchingHook}: {
+export const FetchingComponent = <T extends HasId>({className, componentCreator, props, fetchingHook}: {
+    className?: string
     componentCreator: (props: any) => JSX.Element,
     props: object,
     fetchingHook: () => [boolean, unknown]
@@ -12,7 +13,7 @@ export const FetchingComponent = <T extends HasId>({componentCreator, props, fet
     return (
         <ComponentController
             componentCreator={componentCreator}
-            props={props}
+            props={{...props, className}}
             error={error}
             isLoading={loading}
         />

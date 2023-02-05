@@ -5,7 +5,7 @@ import {allLinksToPages, LinkToPage} from "../router/routes";
 
 const AppRouter = () => {
     return (
-        <div>
+        <>
             <Routes>
                 {allLinksToPages.map(
                     (link: LinkToPage) => {
@@ -13,7 +13,7 @@ const AppRouter = () => {
                     }
                 )}
             </Routes>
-        </div>
+        </>
     );
 };
 
