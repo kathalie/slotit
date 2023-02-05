@@ -20,7 +20,7 @@ const PostsPage = ({filter}: PostPageProps) => {
         qb.updated();
 
     return (
-        <div>
+        <div className="PostsPage">
             <h1>Пости</h1>
             <FetchingLazyLoadingFeed itemType={ItemType.Post}
                                      qb={qb}

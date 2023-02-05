@@ -36,8 +36,6 @@ U
 %src/ts/components/queries/Filters.tsx,b\3\b34a6908ce77b89ed5866d6f7d9366ec5b083e77
 W
 'src/ts/API/query_builder/API_queries.ts,3\3\33f4fd0365715c5f2db0c91127f1c8b15480b754
-a
-1src/ts/components/pages/group_pages/PostsPage.tsx,d\e\def4c8219c07a729ae4f75076f92fc04a05b6b8d
 B
 src/css/common.css,3\1\314b5a8726214b04e6b117d2deb63d5fc0850c0b
 B
@@ -80,8 +78,6 @@ S
 #src/ts/components/UI/AngleArrow.tsx,3\5\354f8734e639c8bffcadcac8f1973d74a8dc7607
 g
 7src/ts/components/UI/dynamic_elements/DynamicArrows.tsx,8\1\816b4682a2b11f74c16acc7d6e61340dbd7e52e2
-a
-1src/ts/components/UI/carousel/CarouselControl.tsx,0\2\0208fe0b6d55c2082c1cedfac4e7cd74b97ae5b4
 <
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 H

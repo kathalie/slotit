@@ -1,5 +1,6 @@
 @import "../constants/colors";
 @import "../common";
+@import "../cards/PostCardMixins";
 
 .MainPage {
   .main_container {
@@ -15,6 +16,16 @@
     @include align_flex(column, center, center, center, center);
 
     flex: 1 1 0;
+
+    .ExtendedPostCard {
+      &:nth-child(odd) {
+        @include left_post;
+      }
+
+      &:nth-child(even) {
+        @include right_post;
+      }
+    }
   }
 
   .best_projects {

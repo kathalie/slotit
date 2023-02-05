@@ -30,14 +30,27 @@ const SimpleNav = ({linkToPage}: NavProps) => {
 }
 
 const DropdownNav = ({linkToPage}: NavProps) => {
+    const toggleDropDown = (e: React.MouseEvent) => {
+        const closestDiv = (e.target as HTMLElement).closest("div");
+
+        if(!closestDiv) return;
+
+        closestDiv.classList.toggle("expanded");
+        closestDiv.classList.toggle("closed");
+    }
+
     return (
-        <div className="dropdown">
+        <div className="dropdown closed">
             {/*<FontAwesomeIcon icon="fa-regular fa-angle-down" />*/}
-            <a href="#" >{linkToPage.caption}</a>
-            <ul className="dropdown-content hidden">
+            <a href="#"
+               onClick={(e) => toggleDropDown(e)}
+            >{linkToPage.caption}</a>
+            <ul className="dropdown-content">
                 {(linkToPage.link as []).map((subLink: LinkToPage) =>
                     <li key={subLink.link as string}>
-                        <Link to={subLink.link as string}>{subLink.caption}</Link>
+                        <Link to={subLink.link as string}
+                              onClick={(e) => toggleDropDown(e)}
+                        >{subLink.caption}</Link>
                     </li>
                 )}
             </ul>

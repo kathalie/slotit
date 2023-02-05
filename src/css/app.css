@@ -96,42 +96,53 @@
 .MainNavigation > ul li.major-link:has(.dropdown) {
   position: relative;
 }
-.MainNavigation > ul .dropdown {
+.MainNavigation > ul div.dropdown {
   display: inline-block;
 }
-.MainNavigation > ul .dropdown .dropdown-content {
+.MainNavigation > ul div.dropdown > a {
+  position: relative;
+}
+.MainNavigation > ul div.dropdown > a::after {
+  content: "‹";
+  position: absolute;
+  right: -15px;
+  display: inline-block;
+  font-size: 24px;
+  color: #444;
+  transition: 0.5s ease-in-out;
+}
+.MainNavigation > ul div.dropdown .dropdown-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: normal;
   align-content: normal;
   text-align: left;
-  display: none;
   position: absolute;
   left: 0;
   background-color: #f1f1f1;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-.MainNavigation > ul .dropdown .dropdown-content a {
-  padding: 0 24px 0 12px;
-}
-.MainNavigation > ul .dropdown > a::after {
-  content: " ⯆";
-  display: inline-block;
-  color: #9b6ac5;
-}
-.MainNavigation > ul .dropdown > a:hover:after {
-  transition: 1s ease-in-out;
-  rotate: 180deg;
-}
-.MainNavigation > ul .dropdown:hover .dropdown-content {
-  display: block;
-}
-.MainNavigation > ul .dropdown li {
+.MainNavigation > ul div.dropdown .dropdown-content li {
   padding: 15px 0;
   font-size: 0.85em;
   white-space: nowrap;
+}
+.MainNavigation > ul div.dropdown .dropdown-content li a {
+  padding: 0 24px 0 12px;
+}
+.MainNavigation > ul div.closed .dropdown-content {
+  display: none;
+}
+.MainNavigation > ul div.closed > a::after {
+  rotate: -90deg;
+}
+.MainNavigation > ul div.expanded .dropdown-content {
+  display: block;
+}
+.MainNavigation > ul div.expanded > a::after {
+  rotate: 90deg;
 }
 
 a.current {
@@ -299,6 +310,15 @@ h1 {
   border-bottom: 1px dashed #222;
   width: 60%;
 }
+.PostCard img {
+  right: unset;
+  left: 0;
+}
+.PostCard .brief_info {
+  right: 0;
+  padding-left: 40px;
+  padding-right: 10px;
+}
 .PostCard .LinkedCard {
   height: 300px;
   display: flex;
@@ -341,21 +361,6 @@ h1 {
 .PostCard .LinkedCard .brief_info .description {
   font-family: "Cormorant", serif;
   font-size: 18pt;
-}
-.PostCard:nth-child(odd) img {
-  left: 0;
-}
-.PostCard:nth-child(odd) .brief_info {
-  right: 0;
-  padding-left: 40px;
-  padding-right: 10px;
-}
-.PostCard:nth-child(even) img {
-  right: 0;
-}
-.PostCard:nth-child(even) .brief_info {
-  left: 0;
-  padding-right: 40px;
 }
 
 .popup.hidden {
@@ -510,6 +515,23 @@ h1 {
   align-content: center;
   text-align: center;
   flex: 1 1 0;
+}
+.MainPage .recent_posts .ExtendedPostCard:nth-child(odd) img {
+  right: unset;
+  left: 0;
+}
+.MainPage .recent_posts .ExtendedPostCard:nth-child(odd) .brief_info {
+  right: 0;
+  padding-left: 40px;
+  padding-right: 10px;
+}
+.MainPage .recent_posts .ExtendedPostCard:nth-child(even) img {
+  left: unset;
+  right: 0;
+}
+.MainPage .recent_posts .ExtendedPostCard:nth-child(even) .brief_info {
+  left: 0;
+  padding-right: 40px;
 }
 .MainPage .best_projects {
   display: flex;

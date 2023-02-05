@@ -1,10 +1,14 @@
 @import "../common";
 @import "../constants/colors";
 @import "../constants/fonts";
+@import "PostCardMixins";
 
 $picture_width: 300px;
 
 .PostCard {
+  //Default alignment for posts
+  @include left_post;
+
   border-bottom: 1px dashed $dark_grey;
   width: 60%;
 
@@ -52,30 +56,5 @@ $picture_width: 300px;
          font-size: 18pt;
        }
      }
-  }
-
-  $horizontal_padding: 40px;
-
-  &:nth-child(odd) {
-    img {
-      left: 0;
-    }
-
-    .brief_info {
-      right: 0;
-      padding-left: $horizontal_padding;
-      padding-right: 10px;
-    }
-  }
-
-  &:nth-child(even) {
-    img {
-      right: 0;
-    }
-
-    .brief_info {
-      left: 0;
-      padding-right: $horizontal_padding;
-    }
   }
 }

@@ -1,0 +1,26 @@
+$horizontal_padding: 40px;
+
+@mixin left_post {
+  img {
+    right: unset;
+    left: 0;
+  }
+
+  .brief_info {
+    right: 0;
+    padding-left: $horizontal_padding;
+    padding-right: 10px;
+  }
+}
+
+@mixin right_post {
+  img {
+    left: unset;
+    right: 0;
+  }
+
+  .brief_info {
+    left: 0;
+    padding-right: $horizontal_padding;
+  }
+}
