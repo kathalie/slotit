@@ -1,6 +1,6 @@
 import React from 'react';
 import {SortOrder} from "../../API/query_builder/queries.types";
-import {Callback} from "../../types/callback.type";
+import {Callback} from "../../types/basic.types";
 
 const SortButton = ({order, onClick, children}: {
     order: SortOrder | "",

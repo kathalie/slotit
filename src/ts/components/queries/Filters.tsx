@@ -2,7 +2,7 @@ import React from 'react';
 import {IQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
 import {PostType, postTypeCaptions} from "../../types/models";
 import {filters} from "../../API/query_builder/API_queries";
-import {Callback} from "../../types/callback.type";
+import {Callback} from "../../types/basic.types";
 import Sort from "./Sort";
 
 const Filters = ({qb, setQb}:{

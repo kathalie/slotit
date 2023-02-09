@@ -18,21 +18,24 @@
     .recent_posts {
       @include align_flex(column, center, center, center, center);
 
+      width: 100%;
 
-      width: 60%;
+      .Feed {
+        width: 60%;
 
-      .ExtendedPostCard {
-        &:nth-child(odd) {
-          @include left_post;
-        }
+        .ExtendedPostCard {
+          &:nth-child(odd) {
+            @include left_post;
+          }
 
-        &:nth-child(even) {
-          @include right_post;
+          &:nth-child(even) {
+            @include right_post;
+          }
         }
       }
     }
 
-    .best_projects {
+    .best_projects .Feed{
       @include align_flex(row, center, center, center, center);
     }
 

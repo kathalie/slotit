@@ -1,0 +1,19 @@
+@import "../common";
+
+.ProjectsPage {
+  @include align_flex(column, center, center);
+
+  width: 100vw;
+
+  .projects {
+    .Feed {
+      @include grid(3);
+
+      max-width: min-content;
+    }
+
+    .Pagination {
+      margin-top: 20px;
+    }
+  }
+}

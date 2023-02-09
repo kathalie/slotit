@@ -50,26 +50,29 @@
   align-items: center;
   align-content: center;
   text-align: center;
+  width: 100%;
+}
+.MainPage .main_container .recent_posts .Feed {
   width: 60%;
 }
-.MainPage .main_container .recent_posts .ExtendedPostCard:nth-child(odd) img {
+.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(odd) img {
   right: unset;
   left: 0;
 }
-.MainPage .main_container .recent_posts .ExtendedPostCard:nth-child(odd) .brief_info {
+.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(odd) .brief_info {
   right: 0;
   padding-left: 40px;
   padding-right: 10px;
 }
-.MainPage .main_container .recent_posts .ExtendedPostCard:nth-child(even) img {
+.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(even) img {
   left: unset;
   right: 0;
 }
-.MainPage .main_container .recent_posts .ExtendedPostCard:nth-child(even) .brief_info {
+.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(even) .brief_info {
   left: 0;
   padding-right: 40px;
 }
-.MainPage .main_container .best_projects {
+.MainPage .main_container .best_projects .Feed {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -263,20 +266,57 @@
   margin: 0;
 }
 
-.PostCard {
+.ProjectsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  text-align: left;
+  width: 100vw;
+}
+.ProjectsPage .projects .Feed {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: auto;
+  max-width: min-content;
+}
+@media screen and (max-width: 768px) {
+  .ProjectsPage .projects .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media screen and (max-width: 540px) {
+  .ProjectsPage .projects .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+.ProjectsPage .projects .Pagination {
+  margin-top: 20px;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.PostCard, .NewsCard {
   border-bottom: 1px dashed #222;
   width: 100%;
 }
-.PostCard img {
+.PostCard img, .NewsCard img {
   right: unset;
   left: 0;
 }
-.PostCard .brief_info {
+.PostCard .brief_info, .NewsCard .brief_info {
   right: 0;
   padding-left: 40px;
   padding-right: 10px;
 }
-.PostCard .LinkedCard {
+.PostCard .LinkedCard, .NewsCard .LinkedCard {
   height: 300px;
   display: flex;
   flex-direction: row;
@@ -284,18 +324,19 @@
   position: relative;
   margin: 10px 0;
 }
-.PostCard .LinkedCard:hover {
+.PostCard .LinkedCard:hover, .NewsCard .LinkedCard:hover {
   transition: all 0.1s;
   transform: scale(1.05);
 }
-.PostCard .LinkedCard img {
-  max-height: 100%;
-  line-height: 100%;
+.PostCard .LinkedCard .picture, .NewsCard .LinkedCard .picture {
+  height: 300px;
+  width: 300px;
   object-fit: cover;
   position: absolute;
   background-color: #222;
+  color: white;
 }
-.PostCard .LinkedCard .brief_info {
+.PostCard .LinkedCard .brief_info, .NewsCard .LinkedCard .brief_info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -307,15 +348,15 @@
   width: calc(100% - 300px);
   padding: 10px 0;
 }
-.PostCard .LinkedCard .brief_info .date {
+.PostCard .LinkedCard .brief_info .date, .NewsCard .LinkedCard .brief_info .date {
   text-align: left;
   color: #444;
 }
-.PostCard .LinkedCard .brief_info h2 {
+.PostCard .LinkedCard .brief_info h2, .NewsCard .LinkedCard .brief_info h2 {
   font-size: 20pt;
   margin-bottom: 10px;
 }
-.PostCard .LinkedCard .brief_info .description {
+.PostCard .LinkedCard .brief_info .description, .NewsCard .LinkedCard .brief_info .description {
   font-family: "Cormorant", serif;
   font-size: 18pt;
 }
@@ -433,7 +474,12 @@
   align-items: center;
   align-content: normal;
   text-align: left;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   padding: 30px 70px;
+  background-color: #fff;
   font-family: "Raleway", sans-serif;
   font-weight: 300;
 }
@@ -483,6 +529,14 @@
   font-size: 24px;
   color: #444;
   transition: 0.5s ease-in-out;
+  rotate: -90deg;
+  rotate: -90deg;
+}
+.MainNavigation > ul div.dropdown:hover .dropdown-content {
+  display: block;
+}
+.MainNavigation > ul div.dropdown:hover a::after {
+  rotate: 90deg;
 }
 .MainNavigation > ul div.dropdown .dropdown-content {
   display: flex;
@@ -491,11 +545,11 @@
   align-items: normal;
   align-content: normal;
   text-align: left;
+  display: none;
   position: absolute;
   left: 0;
   background-color: #f1f1f1;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  z-index: 1;
 }
 .MainNavigation > ul div.dropdown .dropdown-content li {
   padding: 15px 0;
@@ -504,18 +558,6 @@
 }
 .MainNavigation > ul div.dropdown .dropdown-content li a {
   padding: 0 24px 0 12px;
-}
-.MainNavigation > ul div.closed .dropdown-content {
-  display: none;
-}
-.MainNavigation > ul div.closed > a::after {
-  rotate: -90deg;
-}
-.MainNavigation > ul div.expanded .dropdown-content {
-  display: block;
-}
-.MainNavigation > ul div.expanded > a::after {
-  rotate: 90deg;
 }
 
 a.current {
@@ -830,6 +872,54 @@ h1 {
 
 .toRight {
   transform: rotate(-90deg);
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.Pagination li {
+  border: 1px dashed #222;
+}
+.Pagination li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  font-size: 16pt;
+  cursor: pointer;
+}
+.Pagination li:hover {
+  transition: all 0.1s;
+  transform: scale(1.05);
+}
+.Pagination .active, .Pagination .prev, .Pagination .next {
+  color: white;
+}
+.Pagination .prev, .Pagination .next {
+  background-color: #444;
+}
+.Pagination .active {
+  background-color: #222;
+}
+.Pagination .disabled {
+  color: #666;
 }
 
 /*# sourceMappingURL=app.css.map */

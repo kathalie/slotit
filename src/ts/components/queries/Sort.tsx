@@ -3,7 +3,7 @@ import SortButton from "./SortingButton";
 import {APISort, SortOrder} from "../../API/query_builder/queries.types";
 import {sorts} from "../../API/query_builder/API_queries";
 import {IQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
-import {Callback} from "../../types/callback.type";
+import {Callback} from "../../types/basic.types";
 
 type SortField = "date" | "title";
 

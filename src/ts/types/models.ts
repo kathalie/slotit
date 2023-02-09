@@ -17,9 +17,9 @@ export type Project = HasId & CommonStructure & HasPicture & {
     inProcess: boolean
 };
 
-export type News = HasId & CommonStructure & HasPicture & {
+export type News = HasId & CommonStructure & {
     date: Date,
-    project_id: number
+    projectId: number
 };
 
 export type Post = HasId & CommonStructure & HasPicture & {

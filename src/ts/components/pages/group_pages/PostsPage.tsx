@@ -1,33 +1,34 @@
-import React from 'react';
-import {ItemType} from "../../../types/item.types";
+import React, {useState} from 'react';
 import {APIFilter} from "../../../API/query_builder/queries.types";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {sorts} from "../../../API/query_builder/API_queries";
-import {FetchingLazyLoadingFeed} from "../../fetching_components/fetching_feeds";
+import {PostCard} from "../../cards/PostCard";
+import FetchedFeed, {feedPagination} from "../../UI/fetching_components/FetchedFeed";
+import {useFetchPosts} from "../../UI/fetching_components/useFetchItems";
 
 export type PostPageProps = {
     filter?: APIFilter;
 }
 
 const PostsPage = ({filter}: PostPageProps) => {
-    let qb = new APIQueryBuilder()
+    let initialQb = new APIQueryBuilder()
         .setLimit(5)
         .setSort(sorts.byDate("desc"))
         .removeAllFilters();
 
-    qb = filter ?
-        qb.addFilter(filter).updated() :
-        qb.updated();
+    initialQb = filter ?
+        initialQb.addFilter(filter).updated() :
+        initialQb.updated();
+
+    const [qb, setQb] = useState(initialQb);
 
     return (
         <div className="PostsPage">
             <h1>Пости</h1>
-            <FetchingLazyLoadingFeed itemType={ItemType.Post}
-                                     qb={qb}
-                                     deps={[qb]}
-                                     filters={!filter}
-                                     filter={filter}
-                                     className="posts"
+            <FetchedFeed useQb={{qb, setQb}}
+                         card={PostCard}
+                         fetchingHook={useFetchPosts}
+                         pagination={feedPagination.LAZY_LOADING}
             />
         </div>
     );

@@ -5,7 +5,7 @@
 
 $picture_width: 300px;
 
-.PostCard {
+.PostCard, .NewsCard {
   //Default alignment for posts
   @include left_post;
 
@@ -25,12 +25,13 @@ $picture_width: 300px;
       @include scale_smoothly(1.05);
     }
 
-    img {
-      max-height: 100%;
-      line-height: 100%;
+    .picture {
+      height: $picture_width;
+      width: $picture_width;
       object-fit: cover;
       position: absolute;
       background-color: $dark_grey;
+      color: white;
     }
 
     .brief_info {

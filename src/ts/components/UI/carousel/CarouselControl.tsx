@@ -1,5 +1,5 @@
 import React from 'react';
-import {Callback} from "../../../types/callback.type";
+import {Callback} from "../../../types/basic.types";
 
 export enum CarouselControlDirection {
     Left, Right

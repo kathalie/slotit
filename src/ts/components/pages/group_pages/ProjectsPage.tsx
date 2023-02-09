@@ -1,18 +1,28 @@
 import React, {useState} from 'react';
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
-import {ItemType} from "../../../types/item.types";
-import {FetchingFeed} from "../../fetching_components/fetching_feeds";
+import FetchedFeed, {feedPagination} from "../../UI/fetching_components/FetchedFeed";
+import {pictureSize} from "../../cards/ProjectCard";
+import {projectCardCreator} from "../../UI/fetching_components/itemCardsCreators";
+import {useFetchProjects} from "../../UI/fetching_components/useFetchItems";
 
 const ProjectsPage = () => {
-    const [page, setPage] = useState(1);
-
-    const qb = new APIQueryBuilder().setPage(page);
-
+    const [qb, setQb] = useState(new APIQueryBuilder().setLimit(9));
 
     return (
-        <div>
+        <div className="ProjectsPage">
             <h1>Проекти</h1>
-            <FetchingFeed itemType={ItemType.Project} qb={qb}/>
+            <FetchedFeed useQb={{qb, setQb}}
+                         card={projectCardCreator(pictureSize.SMALL, true)}
+                         fetchingHook={useFetchProjects}
+                         pagination={feedPagination.PAGINATION}
+            />
+            {/*<FetchedProjectsFeed qb={qb} />*/}
+            {/*<FetchingPaginationFeed className="projects"*/}
+            {/*                        itemType={ItemType.Project}*/}
+            {/*                        qb={qb}*/}
+            {/*                        setQb={setQb}*/}
+            {/*                        deps={[qb]}*/}
+            {/*/>*/}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import {MutableRefObject, useEffect, useRef} from "react";
-import {Callback} from "../types/callback.type";
+import {Callback} from "../types/basic.types";
 
 export const useIntersectionObserver = (ref: MutableRefObject<Element | null>, canLoad: boolean, isLoading: boolean, callback: Callback) => {
     const observer = useRef<IntersectionObserver | null>(null);
@@ -8,7 +8,7 @@ export const useIntersectionObserver = (ref: MutableRefObject<Element | null>, c
         if(isLoading) return;
         if(observer.current) observer.current.disconnect();
 
-        observer.current = new IntersectionObserver(function(entries, observer) {
+        observer.current = new IntersectionObserver(function(entries, ) {
             if (entries[0].isIntersecting && canLoad) {
                 callback();
             }

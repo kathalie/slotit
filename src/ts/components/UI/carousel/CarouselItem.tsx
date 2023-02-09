@@ -1,7 +1,8 @@
 import React from 'react';
+import {JSXChildren} from "../../../types/basic.types";
 
 const CarouselItem = ({children, width, className}: {
-    children: JSX.Element[] | JSX.Element,
+    children: JSXChildren,
     width: string | number,
     className: string
 }) => {

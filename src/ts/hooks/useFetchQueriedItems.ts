@@ -1,7 +1,7 @@
 import {HasId} from "../types/models";
 import {ItemType} from "../types/item.types";
 import {IQueryBuilder} from "../API/query_builder/APIQueryBuilder";
-import {Callback} from "../types/callback.type";
+import {Callback} from "../types/basic.types";
 import {useState} from "react";
 import {useFetchItems} from "./useFetching";
 

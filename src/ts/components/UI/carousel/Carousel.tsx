@@ -1,10 +1,12 @@
 import React, {Children, cloneElement, useEffect, useState} from 'react';
 import {useSwipeable} from "react-swipeable";
+
 import CarouselControl, {CarouselControlDirection} from "./CarouselControl";
 import CarouselIndicator from "./CarouselIndicator";
+import {JSXChildren} from "../../../types/basic.types";
 
 const Carousel = ({children, className}: {
-    children: JSX.Element[],
+    children: JSXChildren,
     className?: string
 }) => {
     const [activeIndex, setActiveIndex] = useState(0);

@@ -1,0 +1,19 @@
+@import "../constants/fonts";
+@import "../common";
+
+.LearnMore, .sort-button {
+  display: inline-block;
+  padding: 15px;
+  text-align: center;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px dashed white;
+  border-radius: 30px;
+
+  font-family: $sans-serif_font;
+  font-size: 12pt;
+
+  &:hover {
+    @include scale_smoothly(1.05);
+  }
+}

@@ -75,8 +75,7 @@ function mockNews(n) {
             title: faker.hacker.phrase(),
             ...getContentAndDescription(),
             date: getRandomDate(),
-            project_id: faker.datatype.number({min: 0, max: n}),
-            ...getPictures()
+            projectId: faker.datatype.number({min: 0, max: n - 1}),
         });
     }
 

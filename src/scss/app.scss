@@ -1,25 +1,27 @@
 @import "pages/MainPage";
 @import "pages/AboutUsPage";
 @import "pages/PostsPage";
+@import "pages/ProjectsPage";
 
 @import "cards/PostCard";
 @import "cards/ExtendedPostCard";
 @import "cards/ProjectCard";
 @import "cards/NewsCard";
 
-@import "MainHeader";
-@import "MainFooter";
+@import "UI/MainHeader";
+@import "UI/MainFooter";
 
 @import "main";
-@import "loader";
+@import "UI_Elements/Loader";
 
 @import "carousel/Carousel";
 @import "carousel/MainCarousel";
 
-@import "BaseFetchingFeed";
-@import "LearnMore";
+@import "UI/BaseFetchingFeed";
 
-@import "DynamicArrows";
-@import "AngleArrow";
+@import "UI_Elements/LearnMore";
+@import "UI_Elements/DynamicArrows";
+@import "UI_Elements/AngleArrow";
+@import "UI_Elements/Pagination";
 
 

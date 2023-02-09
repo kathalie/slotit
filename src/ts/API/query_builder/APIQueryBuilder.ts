@@ -1,5 +1,4 @@
 import {APIFilter, APIRange, APISort, PaginationProps, SortOrder} from "./queries.types";
-import Sort from "../../components/queries/Sort";
 
 export interface IQueryBuilder {
     totalPages: number;
@@ -50,7 +49,7 @@ export interface IQueryBuilder {
 
 export class APIQueryBuilder implements IQueryBuilder {
     public totalPages: number = -1;
-    public pagination: PaginationProps = {_page: 1, _limit: 10};
+    public pagination: PaginationProps = {_page: 1, _limit: -1};
     public filters: APIFilter[] = [];
     public ranges: APIRange[] = [];
     public sorts: APISort[] = [];
@@ -170,7 +169,13 @@ export class APIQueryBuilder implements IQueryBuilder {
         }
 
         if (this.filters.length > 0) {
-            this.filters.forEach(filter => params[filter().field] = filter().value);
+            this.filters.forEach(filter => {
+                    const key = filter().field;
+
+                    if (!params[key]) params[filter().field] = [filter().value];
+                    else params[filter().field] = Array.of(...params[filter().field], filter().value)
+                }
+            );
         }
 
         if (this.ranges.length > 0) {

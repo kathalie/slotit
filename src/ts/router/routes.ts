@@ -5,7 +5,7 @@ import ProjectsPage from "../components/pages/group_pages/ProjectsPage";
 import IdProjectPage from "../components/pages/individual_pages/IdProjectPage";
 import MainPage from "../components/pages/MainPage";
 import IdNewsPage from "../components/pages/individual_pages/IdNewsPage";
-import IdPostPage from "../components/pages/individual_pages/IdArticlePage";
+import IdPostPage from "../components/pages/individual_pages/IdPostPage";
 import {filters} from "../API/query_builder/API_queries";
 import {APIFilter} from "../API/query_builder/queries.types";
 

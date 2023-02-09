@@ -1,0 +1,39 @@
+@import "../common";
+@import "../constants/colors";
+
+.Pagination {
+  @include align_flex(row, center, center,center,center);
+
+  li {
+    border: 1px dashed $dark_grey;
+
+    a {
+      @include align_flex(column, center, center,center,center);
+
+      width: 40px;
+      height: 40px;
+      font-size: 16pt;
+      cursor: pointer;
+    }
+
+    &:hover {
+      @include scale_smoothly(1.05);
+    }
+  }
+
+  .active, .prev, .next {
+    color: white;
+  }
+
+  .prev, .next {
+    background-color: $medium_grey;
+  }
+
+  .active {
+    background-color: $dark_grey;
+  }
+
+  .disabled {
+    color: $light_grey;
+  }
+}
