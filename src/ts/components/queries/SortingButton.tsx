@@ -1,5 +1,5 @@
 import React from 'react';
-import {SortOrder} from "../../API/query_builder/queries.types";
+import {SortOrder} from "../../API/query_builder/queries/queries.types";
 import {Callback} from "../../types/basic.types";
 
 const SortButton = ({order, onClick, children}: {

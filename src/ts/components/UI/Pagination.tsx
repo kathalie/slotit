@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPaginate from "react-paginate";
-import {IQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
 import {UseQB} from "../../types/basic.types";
+import {IQueryBuilder} from "../../API/query_builder/IQueryBuilder";
 
 export type PaginationProps<Q extends IQueryBuilder> = {
     useQb: UseQB<Q>

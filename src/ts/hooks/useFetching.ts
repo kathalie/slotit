@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import {Callback} from "../types/basic.types";
 import {IService} from "../API/services";
-import {IQueryBuilder} from "../API/query_builder/APIQueryBuilder";
 import {HasId} from "../types/models";
+import {IQueryBuilder} from "../API/query_builder/IQueryBuilder";
 
 export const useFetch = <A extends any>(fetchingCallback: (...args: A[]) => any, deps?: any[], ...args: A[]): [boolean, unknown] => {
     const [isLoading, setIsLoading] = useState(true);

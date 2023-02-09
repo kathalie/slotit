@@ -6,8 +6,8 @@ import IdProjectPage from "../components/pages/individual_pages/IdProjectPage";
 import MainPage from "../components/pages/MainPage";
 import IdNewsPage from "../components/pages/individual_pages/IdNewsPage";
 import IdPostPage from "../components/pages/individual_pages/IdPostPage";
-import {filters} from "../API/query_builder/API_queries";
-import {APIFilter} from "../API/query_builder/queries.types";
+import {filters} from "../API/query_builder/queries/API_queries";
+import {APIFilter} from "../API/query_builder/queries/queries.types";
 
 export type LinkToPage = {
     link: string | LinkToPage[],

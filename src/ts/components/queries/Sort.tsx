@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import SortButton from "./SortingButton";
-import {APISort, SortOrder} from "../../API/query_builder/queries.types";
-import {sorts} from "../../API/query_builder/API_queries";
-import {IQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
+import {APISort, SortOrder} from "../../API/query_builder/queries/queries.types";
+import {sorts} from "../../API/query_builder/queries/API_queries";
 import {Callback} from "../../types/basic.types";
+import {IQueryBuilder} from "../../API/query_builder/IQueryBuilder";
 
 type SortField = "date" | "title";
 

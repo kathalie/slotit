@@ -1,8 +1,8 @@
 import React, {useRef} from 'react';
 import {useIntersectionObserver} from "../../../../hooks/useIntersectionObserver";
 import {ComponentCreator, UseQB} from "../../../../types/basic.types";
-import {IQueryBuilder} from "../../../../API/query_builder/APIQueryBuilder";
 import Loader from "../../Loader";
+import {IQueryBuilder} from "../../../../API/query_builder/IQueryBuilder";
 
 const LazyLoading = <P extends object, Q extends IQueryBuilder>({componentCreator, fetchingHook, useQb}: {
     componentCreator: ComponentCreator<P>

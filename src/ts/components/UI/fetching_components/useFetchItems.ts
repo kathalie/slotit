@@ -2,7 +2,7 @@ import {FetchingHookArgs} from "./FetchedFeed";
 import {newsService, postsService, projectsService} from "../../../../init";
 import {News, Post, Project} from "../../../types/models";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
-import {filters} from "../../../API/query_builder/API_queries";
+import {filters} from "../../../API/query_builder/queries/API_queries";
 import {useFetch, useFetchItems} from "../../../hooks/useFetching";
 import {NewsAndProject} from "./itemCardsCreators";
 

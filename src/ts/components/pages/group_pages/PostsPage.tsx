@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {APIFilter} from "../../../API/query_builder/queries.types";
+import {APIFilter} from "../../../API/query_builder/queries/queries.types";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
-import {sorts} from "../../../API/query_builder/API_queries";
+import {sorts} from "../../../API/query_builder/queries/API_queries";
 import {PostCard} from "../../cards/PostCard";
 import FetchedFeed, {feedPagination} from "../../UI/fetching_components/FetchedFeed";
 import {useFetchPosts} from "../../UI/fetching_components/useFetchItems";

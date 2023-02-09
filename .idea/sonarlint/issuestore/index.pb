@@ -120,8 +120,6 @@ g
 7src/ts/components/pages/individual_pages/IdPostPage.tsx,9\b\9ba8cea158e63c869c27125fda22f7ccda1df487
 G
 src/ts/router/routes.ts,3\0\304a774f04f62d773105e6819dfdb13f74fe551c
-Y
-)src/ts/API/query_builder/queries.types.ts,7\1\71f9d958b7242bee2c7dfdd8dac07949ff19bc12
 5
 db.js,e\a\eaa195ff865ddd8270912315b2d9c10659e0ee81
 W

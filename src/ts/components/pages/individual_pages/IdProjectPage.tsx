@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {Project} from "../../../types/models";
 import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../../types/item.types";
-import {filters, sorts} from "../../../API/query_builder/API_queries";
+import {filters, sorts} from "../../../API/query_builder/queries/API_queries";
 import FetchedById from "../../UI/fetching_components/FetchedById";
 import ProjectCard, {pictureSize} from "../../cards/ProjectCard";
 import FetchedFeed, {feedPagination} from "../../UI/fetching_components/FetchedFeed";

@@ -1,8 +1,8 @@
 import Feed, {FeedProps} from "./Feed";
-import {IQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {UseQB} from "../../../types/basic.types";
 import Pagination from "../Pagination";
 import React from "react";
+import {IQueryBuilder} from "../../../API/query_builder/IQueryBuilder";
 
 const PaginationFeed = <T extends object, Q extends IQueryBuilder>({items, functionalComponent,
                                                      useQb, className

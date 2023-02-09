@@ -1,4 +1,4 @@
-import {PostType} from "../../types/models";
+import {PostType} from "../../../types/models";
 import {APIFilter, APIRange, APISort, SortOrder} from "./queries.types";
 
 export const filters = {

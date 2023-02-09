@@ -1,5 +1,5 @@
 import React from "react";
-import {IQueryBuilder} from "../API/query_builder/APIQueryBuilder";
+import {IQueryBuilder} from "../API/query_builder/IQueryBuilder";
 
 export type Callback = (...args: any[]) => any;
 

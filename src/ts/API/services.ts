@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from "axios";
 import {HasId, News, Post, Project} from "../types/models";
-import {IQueryBuilder} from "./query_builder/APIQueryBuilder";
+import {IQueryBuilder} from "./query_builder/IQueryBuilder";
 
 export interface IService<T extends HasId> {
     getByQuery(queryBuilder: IQueryBuilder): Promise<AxiosResponse<T[]>>;

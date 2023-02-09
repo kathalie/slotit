@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import MainCarousel from "../main/MainCarousel";
 import {APIQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
 import {ItemType} from "../../types/item.types";
-import {filters, sorts} from "../../API/query_builder/API_queries";
+import {filters, sorts} from "../../API/query_builder/queries/API_queries";
 import LearnMore from "../UI/LearnMore";
 import {links} from "../../router/routes";
 import DynamicArrows from "../UI/dynamic_elements/DynamicArrows";

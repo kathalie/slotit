@@ -1,8 +1,8 @@
 import React from 'react';
 import Feed, {FeedProps} from "../Feed";
 import LazyLoading from "../../fetching_components/loadings/LazyLoading";
-import {IQueryBuilder} from "../../../../API/query_builder/APIQueryBuilder";
 import {UseQB} from "../../../../types/basic.types";
+import {IQueryBuilder} from "../../../../API/query_builder/IQueryBuilder";
 
 const LazyLoadedFeed = <T extends object, Q extends IQueryBuilder>({feedProps, fetchingHook, useQb}: {
     feedProps: FeedProps<T>,

@@ -1,11 +1,11 @@
 import React, {useMemo, useState} from 'react';
-import {IQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
 import {ComponentCallback, ObjectValues, SetState, UseQB} from "../../../types/basic.types";
 import LoadedFeed from "../feeds/loaded_feeds/LoadedFeed";
 import LazyLoadedFeed from "../feeds/loaded_feeds/LazyLoadedFeed";
 import LoadedPaginationFeed from "../feeds/loaded_feeds/LoadedPaginationFeed";
 import {CommonLoadedFeedProps, ExtendedLoadedFeedProps} from "../feeds/loaded_feeds/loadedFeedProps.type";
 import {FeedProps} from "../feeds/Feed";
+import {IQueryBuilder} from "../../../API/query_builder/IQueryBuilder";
 
 export const feedPagination: Record<string, {
     feedCreator: ComponentCallback<any>,
