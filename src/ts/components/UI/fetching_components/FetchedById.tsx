@@ -12,12 +12,10 @@ const FetchedById = <T extends HasId>({itemType, cardCreator, id, deps}: {
 }) => {
     const [item, setItem] = useState<T>({} as T);
 
-    function useFetchItemCallback() {
-        return useFetchItem<T>(id, setItem, itemType.service, deps ?? []);
-    }
+    const useFetchingHook = () => useFetchItem<T>(id, setItem, itemType.service, deps ?? []);
 
     return <LoadedComponent componentCreator={{creator: cardCreator, props: {item}}}
-                            fetchingHook={useFetchItemCallback}/>
+                            fetchingHook={useFetchingHook}/>
 }
 
 export default FetchedById;

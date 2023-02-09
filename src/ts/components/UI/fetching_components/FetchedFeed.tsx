@@ -3,7 +3,6 @@ import {ComponentCallback, ObjectValues, SetState, UseQB} from "../../../types/b
 import LoadedFeed from "../feeds/loaded_feeds/LoadedFeed";
 import LazyLoadedFeed from "../feeds/loaded_feeds/LazyLoadedFeed";
 import LoadedPaginationFeed from "../feeds/loaded_feeds/LoadedPaginationFeed";
-import {CommonLoadedFeedProps, ExtendedLoadedFeedProps} from "../feeds/loaded_feeds/loadedFeedProps.type";
 import {FeedProps} from "../feeds/Feed";
 import {IQueryBuilder} from "../../../API/query_builder/IQueryBuilder";
 
