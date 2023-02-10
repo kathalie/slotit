@@ -3,7 +3,7 @@ import React from "react";
 import {News, Project} from "../../../types/models";
 import ProjectCard, {PictureSize} from "../../cards/ProjectCard";
 
-export type NewsAndProject = { news: News, project?: Project };
+export type NewsAndProject = { news: News, project?: Project, id: number };
 
 export const newsCardCreator = ({item}: { item: NewsAndProject }) => {
     return (

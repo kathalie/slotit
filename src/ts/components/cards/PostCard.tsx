@@ -7,12 +7,13 @@ import {directions} from "../UI/AngleArrow";
 import {CardProps, LinkedCard} from "./LinkedCard";
 import {formattedDate} from "../../utils/date";
 import {JSXChildren} from "../../types/basic.types";
+import {concatClassNames} from "../../utils/concatClassNames";
 
 export const PostCard = ({item, className, children}: CardProps<Post> & {
     children?: JSXChildren
 }) => {
     return (
-        <div className={`PostCard ${className ?? ""}`}>
+        <div className={concatClassNames("PostCard", className)}>
             <LinkedCard id={item.id} link={links.postId}>
                 <img className="picture" src={item.smallPicture} alt={`Picture of post with title "${item.title}"`}/>
                 <div className="brief_info">
@@ -37,7 +38,7 @@ export const ExtendedPostCard = ({item, className}: CardProps<Post>) => {
     }
 
     return (
-        <PostCard className={`ExtendedPostCard ${className ?? ""}`} item={item}>
+        <PostCard className={concatClassNames("ExtendedPostCard", className)} item={item}>
             <Link to={postTypesToLinks[item.type].link}>
                 <p>{postTypesToLinks[item.type].caption}</p>
                 <DynamicArrows direction={directions.toRight}/>

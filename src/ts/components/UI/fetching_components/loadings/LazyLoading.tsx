@@ -37,7 +37,7 @@ const LazyLoader = <P extends object, Q extends IQueryBuilder>({isLoading, useQb
             .setPage(currentPage + 1)
             .updated() as Q
         );
-    })
+    });
 
     return (
         <>

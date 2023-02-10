@@ -20,8 +20,6 @@ c
 3src/ts/components/UI/carousel/CarouselIndicator.tsx,f\a\faadabb8284ff69f30b22859349109036c7992b5
 J
 src/ts/utils/randomizer.ts,c\9\c9568109d3eea69c7f173462bd7d187698053254
-=
-tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0
 L
 src/scss/cards/NewsCard.scss,5\e\5e133bc2345db09d39039b9741aa66569722caa8
 R
@@ -34,14 +32,10 @@ g
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 O
 src/scss/cards/ProjectCard.scss,6\9\69cb132be23daf2ec5f73ad6edebbf723f4acef6
-e
-5src/ts/components/UI/navigations/FooterNavigation.tsx,f\4\f4637c2c50e1daccb2de26759f2a9b88b82e4ee2
 M
 src/scss/constants/fonts.scss,9\e\9effd0cf68195f5f670f710f553a8ea866de031e
 T
 $src/scss/cards/ExtendedPostCard.scss,3\9\396800691a97df06c6bf3153e936886ab971909a
-P
- src/ts/components/MainFooter.tsx,3\b\3ba8d314ffacdb74420d7aee4a3e3e8f7285dadd
 T
 $src/ts/components/UI/LinkWithImg.tsx,5\c\5c0f8034b96f83ff8302119774ae49a40ba232aa
 O
@@ -50,12 +44,8 @@ W
 'src/ts/components/pages/AboutUsPage.tsx,d\4\d4d027bce852c154a3c012a8f738654746726c01
 B
 src/scss/main.scss,9\3\939259f8e8ba841f0277ba43fe934e714d29d4d3
-U
-%src/ts/components/UI/MainCarousel.tsx,0\7\0762c7c4559e84ec6112137bece85ae470cc7a21
 M
 src/ts/components/UI/Logo.tsx,9\0\90e85007cc4cb1f9efff8ae43e795aa6b52955d9
->
-src/ts/App.tsx,8\c\8c33dfd888879eb2bdb465fcd276e3e8e42e2254
 R
 "src/scss/cards/PostCardMixins.scss,3\f\3f4a8b27865f22501434d3d4a6ed47824fa6709f
 A
@@ -64,14 +54,8 @@ a
 1src/ts/components/UI/carousel/CarouselControl.tsx,0\2\0208fe0b6d55c2082c1cedfac4e7cd74b97ae5b4
 G
 src/scss/normalize.scss,0\4\04784f6c62410769dddcdcef0b5e47d405a040ef
-R
-"src/ts/components/queries/Sort.tsx,f\9\f9b02eb12f7981519d3d115651c57b09a6da7915
-?
-src/css/app.css,5\7\57835efc4af4c5d7646ffd219e3d1111feb00fa8
 P
  src/scss/UI_Elements/Loader.scss,3\8\3851d01dea55081bf1c6ecd892b640b7f95f1111
-S
-#src/scss/UI_Elements/LearnMore.scss,1\7\178ce52dc89293d332351e4644e4f66057b7bd91
 W
 'src/scss/UI_Elements/DynamicArrows.scss,2\3\233066035a55cbe4985552ee111942be6c4db810
 T
@@ -82,10 +66,6 @@ Q
 !src/scss/UI/BaseFetchingFeed.scss,a\7\a742dcd2a555615bc0f530acb3fa20e0c3853690
 M
 src/scss/pages/PostsPage.scss,a\9\a9041bd8df49f7005e81740f4b815ca2e4dddd47
-[
-+src/ts/components/queries/SortingButton.tsx,b\1\b1dcfef0dce42471bedad3f7ced4fc599c393c0b
-A
-src/scss/app.scss,7\b\7b64c5921189ef0651a32cac56b283585985ab76
 N
 src/scss/constants/colors.scss,8\1\814d2b3c8038dd37c35d6df18e1f0f4d7ebca574
 T
@@ -94,14 +74,8 @@ S
 #src/scss/carousel/MainCarousel.scss,6\8\686b1952576df92ec9e6f6ae18a0c38538cc7f4c
 D
 src/css/CardLink.css,8\f\8f275ff6f67b9eab3c638b91990492ef27de7115
-c
-3src/ts/components/UI/navigations/MainNavigation.tsx,5\1\519455d4e3e2f489a3a6674cd50f389b1acb7358
 O
 src/scss/carousel/Carousel.scss,e\d\ed73898599be6f5b21e14b777f74bb3d7bfb762f
-;
-src/init.ts,a\8\a867acfe33f5ace743dd867fccbdd00b5c2d4060
-F
-src/ts/API/services.ts,e\7\e77af30c309c4418346c1992d627ac49223aa404
 K
 src/scss/UI/MainHeader.scss,8\6\86e56c89f2689706f3d2ab604202d4d04d0712b0
 L
@@ -110,19 +84,51 @@ D
 src/scss/common.scss,c\2\c200c734b8e73116a5509a18eee96ea07c0c78fe
 L
 src/scss/pages/MainPage.scss,2\1\21a39348ac716dfee73e908290bb4e4027aeeff9
-D
-src/ts/utils/date.ts,7\8\788aa5bd21adf48e07267e9ebfd103d774776b66
-g
-7src/ts/components/pages/individual_pages/IdNewsPage.tsx,1\e\1e626c1248fa878106d6a471aa48ca4badbfda6c
-g
-7src/ts/components/pages/individual_pages/IdPostPage.tsx,9\b\9ba8cea158e63c869c27125fda22f7ccda1df487
-G
-src/ts/router/routes.ts,3\0\304a774f04f62d773105e6819dfdb13f74fe551c
 5
 db.js,e\a\eaa195ff865ddd8270912315b2d9c10659e0ee81
+P
+ src/scss/pages/ProjectsPage.scss,f\6\f646e01bea5d41c9ac4b4504a6d0fa5b0bc63261
+U
+%src/ts/components/main/MainFooter.tsx,f\4\f43c4ad5a61a0eaea90ebd9e3fc31a1cb8192426
 W
-'src/ts/hooks/useIntersectionObserver.ts,4\8\487ed7c3b249a52d27596599ce202b01784584ea
-t
-Dsrc/ts/components/fetching_components/fetching_single_components.tsx,5\6\567e32af11a2472bd68f3fb7251116227aca5b81
+'src/ts/components/main/MainCarousel.tsx,5\5\55c0111d66a0668864b2b38390c479dd2f737bca
+g
+7src/ts/components/main/navigations/FooterNavigation.tsx,8\0\80e6f04c7d5945fd2cdec0d1900442a9ac23c3bd
+J
+src/ts/types/item.types.ts,d\6\d610734e4a8fe06cfef0f31422dff39d6066f663
+=
+src/index.tsx,5\a\5ab44fe33ca96299f51ad4778a73e425b92bf439
+O
+src/ts/components/AppRouter.tsx,7\c\7c5403ba4528ec7f3bbb8138885758ff5bf04f71
+Q
+!src/ts/components/ScrollToTop.tsx,c\a\ca76b35d5512f05192104da60522d9caa44682a6
+a
+1src/ts/API/query_builder/queries/queries.types.ts,4\0\403bda89172dff965e087cad366f42890ecf4961
+u
+Esrc/ts/components/UI/fetching_components/loadings/LoadedComponent.tsx,f\9\f984dee0442e13c50901ed953960b72fd85dd30c
+K
+src/ts/hooks/useFetching.ts,6\b\6b0ce8310d6913a2a9a7937a75d607abd55a3282
+T
+$src/ts/components/pages/MainPage.tsx,9\6\96e433276d4bfd585abd873c964fbe2666dc06fb
+h
+8src/ts/components/UI/fetching_components/FetchedById.tsx,d\f\df1f21d4e79928fc263d3e5e4af88e08d81a5d87
+V
+&src/ts/components/cards/LinkedCard.tsx,0\0\00050bf7011c0499aaf7898d4a026840544572e5
+K
+src/ts/types/basic.types.ts,a\7\a7ee6610b856165ecebf3af1c24c61a9b1f17522
+T
+$src/ts/components/cards/NewsCard.tsx,5\b\5bdda3bd47878e757b81fcc3499031ce1e0a4db0
+Z
+*src/ts/components/UI/carousel/Carousel.tsx,d\3\d313e6c829270f0f8853dbfd3e275bbb46cd4a9b
+^
+.src/ts/components/UI/carousel/CarouselItem.tsx,2\c\2cd5eb809275b8882924faf51e3c1bb2f55c5112
+T
+$src/ts/components/cards/PostCard.tsx,d\0\d07a64ecc529cf52d0404a26666db1b245e8718b
+W
+'src/ts/components/cards/ProjectCard.tsx,1\e\1e7fb6d163fbc342898b58d3e560f5eb6aa0b9b6
+P
+ src/ts/utils/concatClassNames.ts,5\1\51740197fc87dc16dd2c552702a694a150fe1573
 F
 src/ts/types/models.ts,0\e\0efe1803cbd89491f0ee57b40f99947346056ae8
+=
+tsconfig.json,6\1\61ebb9fd6e8cf9082658121d5d81e297791dacd0

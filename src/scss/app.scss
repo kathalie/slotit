@@ -12,16 +12,16 @@
 @import "UI/MainFooter";
 
 @import "main";
-@import "UI_Elements/Loader";
 
 @import "carousel/Carousel";
 @import "carousel/MainCarousel";
 
 @import "UI/BaseFetchingFeed";
 
+@import "UI_Elements/Loader";
 @import "UI_Elements/LearnMore";
 @import "UI_Elements/DynamicArrows";
 @import "UI_Elements/AngleArrow";
 @import "UI_Elements/Pagination";
 
-
+@import "queries/Sort";

@@ -4,6 +4,7 @@ import {useSwipeable} from "react-swipeable";
 import CarouselControl, {CarouselControlDirection} from "./CarouselControl";
 import CarouselIndicator from "./CarouselIndicator";
 import {JSXChildren} from "../../../types/basic.types";
+import {concatClassNames} from "../../../utils/concatClassNames";
 
 const Carousel = ({children, className}: {
     children: JSXChildren,
@@ -38,7 +39,7 @@ const Carousel = ({children, className}: {
     });
 
     return (
-        <div className={`Carousel ${className ?? ""}`}
+        <div className={concatClassNames("Carousel", className)}
              onMouseEnter={() => setPaused(true)}
              onMouseLeave={() => setPaused(false)}
              {...handlers}

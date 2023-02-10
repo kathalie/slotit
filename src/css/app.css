@@ -659,32 +659,6 @@ h1 {
   margin: 70px auto 10px auto;
 }
 
-.lds-dual-ring {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-}
-
-.lds-dual-ring:after {
-  content: " ";
-  display: block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  border: 6px solid #fcf;
-  border-color: #fcf transparent #fcf transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .popup.hidden {
   display: none;
 }
@@ -810,6 +784,32 @@ h1 {
   margin: 0;
 }
 
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fcf;
+  border-color: #fcf transparent #fcf transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .popup.hidden {
   display: none;
 }
@@ -818,7 +818,7 @@ h1 {
   margin: 0;
 }
 
-.LearnMore, .sort-button {
+.LearnMore, .SortButton {
   display: inline-block;
   padding: 15px;
   text-align: center;
@@ -828,7 +828,7 @@ h1 {
   font-family: "Raleway", sans-serif;
   font-size: 12pt;
 }
-.LearnMore:hover, .sort-button:hover {
+.LearnMore:hover, .SortButton:hover {
   transition: all 0.1s;
   transform: scale(1.05);
 }
@@ -920,6 +920,14 @@ h1 {
 }
 .Pagination .disabled {
   color: #666;
+}
+
+.asc::after {
+  content: "￪";
+}
+
+.desc::after {
+  content: "￬";
 }
 
 /*# sourceMappingURL=app.css.map */

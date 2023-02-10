@@ -7,8 +7,11 @@ export interface IQueryBuilder {
     ranges: APIRange[];
     sorts: APISort[];
     searchQuery: string;
+    lastUpdated: string;
 
     updated(): IQueryBuilder;
+
+    itemsNeedRefreshing(): boolean;
 
     setTotalPages(totalPages: number): IQueryBuilder;
 

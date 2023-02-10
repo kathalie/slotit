@@ -6,12 +6,11 @@ import LoadedComponent from "./loadings/LoadedComponent";
 import {IQueryBuilder} from "../../../API/query_builder/IQueryBuilder";
 import {useFetchItems} from "../../../hooks/useFetching";
 
-const FetchedCard = <T extends HasId>({className, itemType, cardCreator, qb, deps}: {
+const FetchedCard = <T extends HasId>({className, itemType, cardCreator, qb}: {
     className?: string,
     itemType: ItemType<T>,
     cardCreator: ({item, className}: { item: T, className?: string }) => JSX.Element,
-    qb: IQueryBuilder,
-    deps?: any[]
+    qb: IQueryBuilder
 }) => {
     const [items, setItems] = useState([]);
 

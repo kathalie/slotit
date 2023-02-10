@@ -34,5 +34,10 @@ export const sorts = {
     },
     byDate: (order: SortOrder): APISort => function dateSort() {
         return {_sort: "date", _order: order};
+    },
+    newsSorts: {
+        byProject: (order: SortOrder): APISort => function projectSort() {
+            return {_sort: "projectId", _order: order};
+        },
     }
 }

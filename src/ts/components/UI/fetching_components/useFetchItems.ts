@@ -1,13 +1,13 @@
 import {FetchingHookArgs} from "./FetchedFeed";
 import {newsService, postsService, projectsService} from "../../../../init";
 import {News, Post, Project} from "../../../types/models";
-import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
+import {JSONServerQueryBuilder} from "../../../API/query_builder/JSONServerQueryBuilder";
 import {filters} from "../../../API/query_builder/queries/API_queries";
 import {useFetch, useFetchItems} from "../../../hooks/useFetching";
 import {NewsAndProject} from "./itemCardsCreators";
 
 export const useFetchNews = (withProjects: boolean) =>
-    function useInnerFetchNews({qb, prevItems, setItems}: FetchingHookArgs<NewsAndProject>) {
+    function useInner({qb, prevItems, setItems}: FetchingHookArgs<NewsAndProject>) {
         const fetchNews = async () => {
             const newsResponse = (await newsService.getByQuery(qb));
             const fetchedNews: News[] = newsResponse.data;
@@ -17,13 +17,14 @@ export const useFetchNews = (withProjects: boolean) =>
             if (withProjects) {
                 const projectIds = new Set<number>(fetchedNews.map(news => news.projectId));
 
-                const projectsQb = new APIQueryBuilder().setLimit(qb.pagination._limit);
+                const projectsQb = new JSONServerQueryBuilder().setLimit(qb.pagination._limit);
                 projectIds.forEach(projectId => projectsQb.addFilter(filters.byId(projectId)));
 
                 const fetchedProjects = (await projectsService.getByQuery(projectsQb)).data;
 
                 newItems = fetchedNews.map(news => {
                     return {
+                        id: news.id,
                         news,
                         project: fetchedProjects.find(project => project.id === news.projectId) as Project
                     };
@@ -31,6 +32,7 @@ export const useFetchNews = (withProjects: boolean) =>
             } else {
                 newItems = fetchedNews.map(news => {
                     return {
+                        id: news.id,
                         news: news
                     };
                 });

@@ -1,37 +1,42 @@
 import {APIFilter, APIRange, APISort, PaginationProps, SortOrder} from "./queries/queries.types";
 import {IQueryBuilder} from "./IQueryBuilder";
 
-export class APIQueryBuilder implements IQueryBuilder {
+export class JSONServerQueryBuilder implements IQueryBuilder {
     public totalPages: number = -1;
     public pagination: PaginationProps = {_page: 1, _limit: -1};
     public filters: APIFilter[] = [];
     public ranges: APIRange[] = [];
     public sorts: APISort[] = [];
     public searchQuery: string = "";
+    public lastUpdated: string = "";
 
-    constructor(qb?: APIQueryBuilder) {
+    constructor(qb?: JSONServerQueryBuilder) {
         if (qb) Object.assign(this, qb);
 
         return this;
     }
 
-    public updated(): APIQueryBuilder {
-        return new APIQueryBuilder(this);
+    public itemsNeedRefreshing(): boolean {
+        return !["", "page", "limit"].includes(this.lastUpdated);
     }
 
-    private set<T>(what: T, how: (what: T) => void): APIQueryBuilder {
+    public updated(): JSONServerQueryBuilder {
+        return new JSONServerQueryBuilder(this);
+    }
+
+    private set<T>(what: T, how: (what: T) => void): JSONServerQueryBuilder {
         how(what);
 
         return this;
     }
 
-    private add<F extends CallableFunction>(what: F, where: F[]): APIQueryBuilder {
+    private add<F extends CallableFunction>(what: F, where: F[]): JSONServerQueryBuilder {
         where.push(what);
 
         return this;
     }
 
-    private remove<F extends CallableFunction>(what: F, where: F[]): APIQueryBuilder {
+    private remove<F extends CallableFunction>(what: F, where: F[]): JSONServerQueryBuilder {
         const index = where.findIndex(p => p.name === what.name);
 
         if (index !== -1) where.splice(index, 1);
@@ -39,67 +44,79 @@ export class APIQueryBuilder implements IQueryBuilder {
         return this;
     }
 
-    public setTotalPages(totalPages: number): APIQueryBuilder {
+    public setTotalPages(totalPages: number): JSONServerQueryBuilder {
         return this.set(totalPages, (n) => this.totalPages = n);
     }
 
-    public setPage(page: number): APIQueryBuilder {
+    public setPage(page: number): JSONServerQueryBuilder {
+        this.lastUpdated = "page";
+
         return this.set(page, (_page) => this.pagination._page = _page);
     }
 
-    public setLimit(limit: number): APIQueryBuilder {
+    public setLimit(limit: number): JSONServerQueryBuilder {
+        this.lastUpdated = "limit";
+
         return this.set(limit, (_limit) => this.pagination._limit = _limit);
     }
 
-    public setSearchQuery(query: string): APIQueryBuilder {
+    public setSearchQuery(query: string): JSONServerQueryBuilder {
+        this.lastUpdated = "search";
+
         return this.set(query, (_query) => this.searchQuery = _query);
     }
 
-    public unsetSearchQuery(): APIQueryBuilder {
+    public unsetSearchQuery(): JSONServerQueryBuilder {
         return this.set("", (_query) => this.searchQuery = _query);
     }
 
-    public addFilter(filter: APIFilter): APIQueryBuilder {
+    public addFilter(filter: APIFilter): JSONServerQueryBuilder {
+        this.lastUpdated = "filter";
+
         return this.add(filter, this.filters);
     }
 
-    public removeFilter(filter: APIFilter): APIQueryBuilder {
+    public removeFilter(filter: APIFilter): JSONServerQueryBuilder {
         return this.remove(filter, this.filters);
     }
 
-    public removeAllFilters(): APIQueryBuilder {
+    public removeAllFilters(): JSONServerQueryBuilder {
         this.filters = [];
 
         return this;
     }
 
-    public setFilter(filter: APIFilter): APIQueryBuilder {
+    public setFilter(filter: APIFilter): JSONServerQueryBuilder {
         return this.removeAllFilters().addFilter(filter);
     }
 
-    public addSort(sort: APISort): APIQueryBuilder {
+    public addSort(sort: APISort): JSONServerQueryBuilder {
+        this.lastUpdated = "sort";
+
         return this.add(sort, this.sorts);
     }
 
-    public removeSort(sort: APISort): APIQueryBuilder {
+    public removeSort(sort: APISort): JSONServerQueryBuilder {
         return this.remove(sort, this.sorts);
     }
 
-    public removeAllSorts(): APIQueryBuilder {
+    public removeAllSorts(): JSONServerQueryBuilder {
         this.sorts = [];
 
         return this;
     }
 
-    public setSort(sort: APISort): APIQueryBuilder {
+    public setSort(sort: APISort): JSONServerQueryBuilder {
         return this.removeAllSorts().addSort(sort);
     }
 
-    public addRange(range: APIRange): APIQueryBuilder {
+    public addRange(range: APIRange): JSONServerQueryBuilder {
+        this.lastUpdated = "range";
+
         return this.add(range, this.ranges);
     }
 
-    public removeRange(range: APIRange): APIQueryBuilder {
+    public removeRange(range: APIRange): JSONServerQueryBuilder {
         return this.remove(range, this.ranges);
     }
 
@@ -140,6 +157,8 @@ export class APIQueryBuilder implements IQueryBuilder {
                 if (objRange._lte) params[`${objRange.field}_lte`] = objRange._lte;
             });
         }
+
+        if (this.searchQuery) params.q = this.searchQuery;
 
         return params;
     }

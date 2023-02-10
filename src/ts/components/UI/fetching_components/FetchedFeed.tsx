@@ -1,10 +1,11 @@
-import React, {useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {ComponentCallback, ObjectValues, SetState, UseQB} from "../../../types/basic.types";
 import LoadedFeed from "../feeds/loaded_feeds/LoadedFeed";
 import LazyLoadedFeed from "../feeds/loaded_feeds/LazyLoadedFeed";
 import LoadedPaginationFeed from "../feeds/loaded_feeds/LoadedPaginationFeed";
 import {FeedProps} from "../feeds/Feed";
 import {IQueryBuilder} from "../../../API/query_builder/IQueryBuilder";
+import {HasId} from "../../../types/models";
 
 export const feedPagination: Record<string, {
     feedCreator: ComponentCallback<any>,
@@ -51,14 +52,15 @@ export type FetchedFeedProps<T extends object, Q extends IQueryBuilder> = {
     pagination: FeedPagination,
 };
 
-const FetchedFeed = <T extends object, Q extends IQueryBuilder>(props: FetchedFeedProps<T, Q>) => {
+const FetchedFeed = <T extends HasId, Q extends IQueryBuilder>(props: FetchedFeedProps<T, Q>) => {
     const [items, setItems] = useState<T[]>([]);
 
-    const memoizedItems = useMemo(() => {
+    const append = (props.pagination === feedPagination.LAZY_LOADING) && !props.useQb.qb.itemsNeedRefreshing();
+
+    let memoizedItems = useMemo(() => {
         return items;
     }, [props.useQb.qb, items]);
 
-    const append = props.pagination === feedPagination.LAZY_LOADING;
 
     const useFetchingHook = () => props.fetchingHook({
             qb: props.useQb.qb,
@@ -67,7 +69,7 @@ const FetchedFeed = <T extends object, Q extends IQueryBuilder>(props: FetchedFe
         }
     );
 
-    const feedProps: FeedProps<T> & {useQb?: UseQB<Q>} = {
+    const feedProps: FeedProps<T> & { useQb?: UseQB<Q> } = {
         ...{
             items: memoizedItems,
             functionalComponent: props.card,
@@ -82,26 +84,6 @@ const FetchedFeed = <T extends object, Q extends IQueryBuilder>(props: FetchedFe
                                       {...(props.pagination.paginationNeedsQb ? {useQb: props.useQb} : {})}
         />
     );
-
-
-    // if (props.pagination === feedPagination.LAZY_LOADING) return (
-    //     <LazyLoading componentCreator={Feed}
-    //                  props={commonProps}
-    //                  fetchingHook={useFetchingHook}
-    //                  useQb={props.useQb}
-    //     />
-    // );
-    //
-    // return (
-    //     <LoadedComponent componentCreator={props.pagination === feedPagination.PAGINATION ? PaginationFeed : Feed}
-    //                      props={{
-    //                          ...commonProps,
-    //                          qb: props.qb,
-    //                          setQb: props.setQb
-    //                      }}
-    //                      fetchingHook={useFetchingHook}
-    //     />
-    // );
 };
 
 export default FetchedFeed;

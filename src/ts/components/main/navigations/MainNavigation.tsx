@@ -23,7 +23,7 @@ type NavProps = {
     linkToPage: LinkToPage
 }
 
-const SimpleNav = ({linkToPage}: NavProps) => {
+export const SimpleNav = ({linkToPage}: NavProps) => {
     return (
         <Link to={linkToPage.link as string}>{linkToPage.caption}</Link>
     );
@@ -49,9 +49,10 @@ const DropdownNav = ({linkToPage}: NavProps) => {
             <ul className="dropdown-content">
                 {(linkToPage.link as []).map((subLink: LinkToPage) =>
                     <li key={subLink.link as string}>
-                        <Link to={subLink.link as string}
-                              // onClick={(e) => toggleDropDown(e)}
-                        >{subLink.caption}</Link>
+                        <SimpleNav linkToPage={subLink} />
+                        {/*<Link to={subLink.link as string}*/}
+                        {/*      // onClick={(e) => toggleDropDown(e)}*/}
+                        {/*>{subLink.caption}</Link>*/}
                     </li>
                 )}
             </ul>

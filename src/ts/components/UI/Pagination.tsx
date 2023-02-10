@@ -10,25 +10,29 @@ export type PaginationProps<Q extends IQueryBuilder> = {
 const Pagination = <Q extends IQueryBuilder>({totalCount, useQb}: PaginationProps<Q> & {
     totalCount: number
 }) => {
-    return (
-        <ReactPaginate
-            className="Pagination"
-            breakLabel="..."
-            nextLabel=">"
-            previousLabel="<"
-            onPageChange={e => {
-                useQb.setQb(useQb.qb.setPage(e.selected + 1).updated() as Q);
-                console.log("clicked", e.selected)
-            }}
+    const forcePage = totalCount === 0 ? - 1 : useQb.qb.pagination._page -1;
 
-            marginPagesDisplayed={1}
-            pageCount={totalCount}
-            forcePage={useQb.qb.pagination._page - 1}
-            activeClassName="active"
-            previousClassName="prev"
-            nextClassName="next"
-            disabledClassName="disabled"
-        />
+    return (
+        <>
+            {
+                totalCount === 0 ?
+                    <p>Таких проектів не знайдено!</p> :
+                    <ReactPaginate
+                        className="Pagination"
+                        breakLabel="..."
+                        nextLabel=">"
+                        previousLabel="<"
+                        onPageChange={e => useQb.setQb(useQb.qb.setPage(e.selected + 1).updated() as Q)}
+                        marginPagesDisplayed={1}
+                        pageCount={totalCount}
+                        forcePage={forcePage}
+                        activeClassName="active"
+                        previousClassName="prev"
+                        nextClassName="next"
+                        disabledClassName="disabled"
+                    />
+            }
+        </>
     );
 };
 

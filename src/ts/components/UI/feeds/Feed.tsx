@@ -1,16 +1,18 @@
 import React from "react";
+import {concatClassNames} from "../../../utils/concatClassNames";
+import {HasId} from "../../../types/models";
 
-export type FeedProps<T extends object> = {
+export type FeedProps<T extends HasId> = {
     items: T[]
     functionalComponent: React.FC<{ item: T}>,
     className?: string
 }
 
-const Feed = <T extends object>(props: FeedProps<T>) => {
+const Feed = <T extends HasId>(props: FeedProps<T>) => {
     return (
-        <div className={`Feed ${props.className ?? ""}`}>
-            {props.items.map((item, index) =>
-                <props.functionalComponent item={item} key={index}/>
+        <div className={concatClassNames("Feed", props.className)}>
+            {props.items.map((item) =>
+                <props.functionalComponent item={item} key={item.id}/>
             )}
         </div>
     );

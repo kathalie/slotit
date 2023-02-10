@@ -29,8 +29,3 @@ export type Post = HasId & CommonStructure & HasPicture & {
 
 export type PostType = "blog" | "translation";
 
-export const postTypeCaptions: Record<PostType | "all", string> = {
-    all: "Всі",
-    blog: "Наш блог",
-    translation: "Переклади статей українською",
-}

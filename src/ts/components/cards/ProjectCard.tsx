@@ -4,6 +4,7 @@ import {CardProps, LinkedCard} from "./LinkedCard";
 import {Project} from "../../types/models";
 import {links} from "../../router/routes";
 import {ObjectValues} from "../../types/basic.types";
+import {concatClassNames} from "../../utils/concatClassNames";
 
 export type PictureSize = ObjectValues<typeof pictureSize>;
 
@@ -19,7 +20,7 @@ const ProjectCard = ({item, className, pictureSize, isLink = false}: CardProps<P
     const simpleProjectCard = <BaseProjectCard item={item} pictureSize={pictureSize}/>;
 
     if (isLink) return (
-        <LinkedCard className={`${className ?? ""}`} id={item.id} link={links.projectId}>
+        <LinkedCard className={concatClassNames(className)} id={item.id} link={links.projectId}>
             {simpleProjectCard}
         </LinkedCard>
     );
@@ -38,7 +39,7 @@ const BaseProjectCard = ({item, pictureSize, className}: CardProps<Project> & {
     pictureSize: PictureSize
 }) => {
     return (
-        <div className={`picture_bg ProjectCard ${className ?? ""}`}
+        <div className={concatClassNames("picture_bg", "ProjectCard", className)}
              style={{backgroundImage: `url(${item[pictureSize]})`}}>
             <div className="summary">
                 <h2>{item.title}</h2>

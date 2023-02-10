@@ -8,7 +8,7 @@ const SortButton = ({order, onClick, children}: {
     children: string,
 }) => {
     return (
-        <button className={`sort-button ${order}`} onClick={onClick}>
+        <button className={`SortButton ${order}`} onClick={onClick}>
             {children}
         </button>
     );

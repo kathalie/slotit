@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useParams} from "react-router-dom";
 import {Project} from "../../../types/models";
-import {APIQueryBuilder} from "../../../API/query_builder/APIQueryBuilder";
+import {JSONServerQueryBuilder} from "../../../API/query_builder/JSONServerQueryBuilder";
 import {ItemType} from "../../../types/item.types";
 import {filters, sorts} from "../../../API/query_builder/queries/API_queries";
 import FetchedById from "../../UI/fetching_components/FetchedById";
@@ -13,12 +13,10 @@ import {newsCardCreator} from "../../UI/fetching_components/itemCardsCreators";
 const IdProjectPage = () => {
     const {id} = useParams<{ id: string }>();
 
-    console.log(":id = ", id);
-
     const numberId: number = parseInt(id ?? "");
 
     return (
-        <div>
+        <div className={"IdProjectPage"}>
             <FetchedProjectContent id={numberId}/>
             <h1>Новини проекту</h1>
             <ProjectNews id={numberId}/>
@@ -27,7 +25,7 @@ const IdProjectPage = () => {
 };
 
 const FetchedProjectContent = ({id}: { id: number }) => {
-    const creator = ({item}: { item: Project }) => (
+    const cardCreator = ({item}: { item: Project }) => (
         <div>
             <ProjectCard item={item}
                          pictureSize={pictureSize.LARGE}
@@ -37,12 +35,12 @@ const FetchedProjectContent = ({id}: { id: number }) => {
     );
 
     return <FetchedById itemType={ItemType.Project}
-                        cardCreator={creator}
+                        cardCreator={cardCreator}
                         id={id}/>
 }
 
 const ProjectNews = ({id}: { id: number }) => {
-    const [qb, setQb] = useState(new APIQueryBuilder()
+    const [qb, setQb] = useState(new JSONServerQueryBuilder()
         .setLimit(10)
         .addSort(sorts.byDate("desc"))
         .addFilter(filters.newsFilters.byProject(id)));

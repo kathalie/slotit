@@ -1,5 +1,6 @@
 import React from 'react';
 import {JSXChildren} from "../../../types/basic.types";
+import {concatClassNames} from "../../../utils/concatClassNames";
 
 const CarouselItem = ({children, width, className}: {
     children: JSXChildren,
@@ -8,7 +9,7 @@ const CarouselItem = ({children, width, className}: {
 }) => {
 
     return (
-        <div className={`CarouselItem ${className ?? ""}`} style={{width}}>
+        <div className={concatClassNames("CarouselItem", className)} style={{width}}>
             {children}
         </div>
     );

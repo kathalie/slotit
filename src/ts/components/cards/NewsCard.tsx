@@ -4,12 +4,13 @@ import {links} from "../../router/routes";
 import {formattedDate} from "../../utils/date";
 import React from "react";
 import ProjectCard, {pictureSize} from "./ProjectCard";
+import {concatClassNames} from "../../utils/concatClassNames";
 
 const NewsCard = ({item, project, className}: CardProps<News> & {
     project?: Project,
 }) => {
     return (
-        <div className={`NewsCard ${className ?? ""}`}>
+        <div className={concatClassNames("NewsCard", className)}>
             {
                 project &&
                 <ProjectCard className="picture"

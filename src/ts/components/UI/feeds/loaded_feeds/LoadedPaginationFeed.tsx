@@ -4,8 +4,9 @@ import {UseQB} from "../../../../types/basic.types";
 import LoadedComponent from "../../fetching_components/loadings/LoadedComponent";
 import PaginationFeed from "../PaginationFeed";
 import {IQueryBuilder} from "../../../../API/query_builder/IQueryBuilder";
+import {HasId} from "../../../../types/models";
 
-const LoadedPaginationFeed = <T extends object, Q extends IQueryBuilder>({feedProps, fetchingHook}: {
+const LoadedPaginationFeed = <T extends HasId, Q extends IQueryBuilder>({feedProps, fetchingHook}: {
     feedProps: FeedProps<T> & { useQb: UseQB<Q> },
     fetchingHook: () => [boolean, unknown],
 }) => {

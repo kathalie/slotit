@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import MainCarousel from "../main/MainCarousel";
-import {APIQueryBuilder} from "../../API/query_builder/APIQueryBuilder";
+import {JSONServerQueryBuilder} from "../../API/query_builder/JSONServerQueryBuilder";
 import {ItemType} from "../../types/item.types";
 import {filters, sorts} from "../../API/query_builder/queries/API_queries";
 import LearnMore from "../UI/LearnMore";
@@ -16,15 +16,15 @@ import {useFetchPosts, useFetchProjects} from "../UI/fetching_components/useFetc
 import FetchedCard from "../UI/fetching_components/FetchedCard";
 
 const MainPage = () => {
-    const [postsQB, setPostQb] = useState(new APIQueryBuilder()
+    const [postsQB, setPostQb] = useState(new JSONServerQueryBuilder()
         .setLimit(3)
         .addSort(sorts.byDate("desc")));
 
-    const [projectsQB, setProjectsQb] = useState(new APIQueryBuilder()
+    const [projectsQB, setProjectsQb] = useState(new JSONServerQueryBuilder()
         .setLimit(3)
         .addFilter(filters.projectFilters.byProcess(false)));
 
-    const [projectInProcessQB, ] = useState(new APIQueryBuilder()
+    const [projectInProcessQB, ] = useState(new JSONServerQueryBuilder()
         .setLimit(1)
         .addFilter(filters.projectFilters.byProcess(true)));
 

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.asc::after {
+  content: "￪";
+}
+
+.desc::after {
+  content: "￬";
+}
+
+/*# sourceMappingURL=Sort.css.map */
