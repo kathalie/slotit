@@ -17,9 +17,15 @@ const IdProjectPage = () => {
 
     return (
         <div className={"IdProjectPage"}>
-            <FetchedProjectContent id={numberId}/>
-            <h1>Новини проекту</h1>
-            <ProjectNews id={numberId}/>
+            {
+                numberId === Number.NaN ?
+                    <p>Проект не знайдено</p> :
+                    <>
+                        <FetchedProjectContent id={numberId}/>
+                        <h1>Новини проекту</h1>
+                        <ProjectNews id={numberId}/>
+                    </>
+            }
         </div>
     );
 };
