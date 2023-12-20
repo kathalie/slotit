@@ -1,0 +1,59 @@
+@import "../common";
+@import "../constants/colors";
+
+.SidebarNavigation {
+  position: relative;
+
+  height: 100%;
+  width: 400px;
+
+  .SideBarHeader {
+    @include align_flex(row, flex-end);
+
+    .burger-button {
+      @include transparent_button(24pt, $dark_grey);
+      @include align_flex(column, center, center, center, center);
+
+      width: 100px;
+    }
+  }
+
+  .SidebarNav {
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background-color:$dark_grey;
+    color: white;
+
+    .close-button {
+      @include transparent_button(24pt);
+
+      padding: 20px;
+    }
+
+    .navigation {
+      padding: 40px;
+      font-size: 18pt;
+
+      .SidebarLink {
+        margin: 20px 0;
+
+        a:hover, summary:hover {
+          color: $orange;
+        }
+
+        .toggle-link {
+          cursor: pointer;
+
+          .sub-link {
+            padding-left: 24px;
+            font-size: 16pt;
+          }
+        }
+      }
+    }
+  }
+}

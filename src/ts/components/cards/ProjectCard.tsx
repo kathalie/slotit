@@ -39,12 +39,14 @@ const BaseProjectCard = ({item, pictureSize, className}: CardProps<Project> & {
     pictureSize: PictureSize
 }) => {
     return (
-        <div className={concatClassNames("picture_bg", "ProjectCard", className)}
-             style={{backgroundImage: `url(${item[pictureSize]})`}}>
-            <div className="summary">
-                <h2>{item.title}</h2>
-                <p className="description">{item.description}</p>
+        <article className={concatClassNames( "ProjectCard", className)}>
+            <div className={"picture_bg"}
+                 style={{backgroundImage: `url(${item[pictureSize]})`}}>
+                <div className="summary">
+                    <h2>{item.title}</h2>
+                    <p className="description">{item.description}</p>
+                </div>
             </div>
-        </div>
+        </article>
     );
 };

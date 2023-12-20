@@ -1,0 +1,11 @@
+.SidebarNavigation {
+  position: relative;
+  width: 75%;
+}
+.SidebarNavigation .SidebarNav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/*# sourceMappingURL=SidebarNavigation.css.map */

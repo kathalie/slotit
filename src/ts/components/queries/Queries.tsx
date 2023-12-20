@@ -17,7 +17,7 @@ const Queries = <Q extends IQueryBuilder>({useQb, queries}: {
 }) => {
 
     return (
-        <div className="queries">
+        <div className="Queries">
             {
                 queries.search &&
                 <Search useQb={useQb}/>

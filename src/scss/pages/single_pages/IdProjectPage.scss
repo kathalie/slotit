@@ -1,0 +1,15 @@
+@import "../../common";
+
+.IdProjectPage {
+  @include align_flex(column, center, center, center, center);
+
+  .content {
+    @include align_flex(column, center, center, center, center);
+
+    width: 100%;
+
+    .ProjectCard {
+      width: 70%;
+    }
+  }
+}

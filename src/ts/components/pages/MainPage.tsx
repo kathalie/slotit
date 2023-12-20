@@ -24,11 +24,11 @@ const MainPage = () => {
         .setLimit(3)
         .addFilter(filters.projectFilters.byProcess(false)));
 
-    const [projectInProcessQB, ] = useState(new JSONServerQueryBuilder()
+    const [projectInProcessQB,] = useState(new JSONServerQueryBuilder()
         .setLimit(1)
         .addFilter(filters.projectFilters.byProcess(true)));
 
-    const projectCreator = ({item}: {item: Project}) => {
+    const projectCreator = ({item}: { item: Project }) => {
         return (
             <ProjectCard item={item}
                          pictureSize={pictureSize.SMALL}
@@ -40,29 +40,31 @@ const MainPage = () => {
     return (
         <div className="MainPage">
             <MainCarousel/>
-            <div className="main_container">
+            <section className="main-container">
                 <h1>Останні пости</h1>
-                <FetchedFeed useQb={{qb: postsQB, setQb: setPostQb}}
+                <FetchedFeed className={"recent-posts"}
+                             useQb={{qb: postsQB, setQb: setPostQb}}
                              card={ExtendedPostCard}
                              fetchingHook={useFetchPosts}
                              pagination={feedPagination.NONE}
                 />
                 <LearnMore link={links.posts} caption="Всі пости"/>
                 <hr className="main-hr"/>
-            </div>
-            <div className="main_container">
+            </section>
+            <section className="main-container">
                 <h1>Готові проекти</h1>
-                <FetchedFeed useQb={{qb: projectsQB, setQb: setProjectsQb}}
+                <FetchedFeed className={"ready-projects"}
+                             useQb={{qb: projectsQB, setQb: setProjectsQb}}
                              card={projectCardCreator(pictureSize.SMALL, true)}
                              fetchingHook={useFetchProjects}
                              pagination={feedPagination.NONE}
                 />
                 <LearnMore link={links.projects} caption="Всі проекти"/>
                 <hr className="main-hr"/>
-            </div>
-            <div className="main_container">
+            </section>
+            <section className="main-container">
                 <h1>Слідкуйте за роботою</h1>
-                <div className="project_in_process">
+                <div className="project-in-process">
                     <DynamicArrows direction={directions.toRight}/>
                     <FetchedCard cardCreator={projectCreator}
                                  itemType={ItemType.Project}
@@ -70,7 +72,7 @@ const MainPage = () => {
                     />
                     <DynamicArrows direction={directions.toLeft}/>
                 </div>
-            </div>
+            </section>
         </div>
     );
 };

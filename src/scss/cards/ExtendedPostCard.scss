@@ -9,13 +9,16 @@
     align-items: flex-start;
   }
 
-  &:nth-child(even) {
-    align-items: flex-end;
+  @media (min-width: 576px) {
+    &:nth-child(even) {
+      align-items: flex-end;
 
-    a {
-      padding-right: 20px;
+      a {
+        padding-right: 20px;
+      }
     }
   }
+
 
   a {
     @include align_flex(row, flex-start, flex-start);

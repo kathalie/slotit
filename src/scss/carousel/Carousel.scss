@@ -62,13 +62,22 @@
   }
 }
 
-$side_margin: 100px;
+$side_margin: 80px;
+$smaller_side_margin: 10px;
 
 .left-control {
   left: $side_margin;
+
+  @media (max-width: 768px) {
+    left: $smaller_side_margin;
+  }
 }
 
 .right-control {
   right: $side_margin;
+
+  @media (max-width: 768px) {
+    right: $smaller_side_margin;
+  }
 }
 

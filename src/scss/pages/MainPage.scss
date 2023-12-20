@@ -2,10 +2,11 @@
 @import "../common";
 @import "../cards/PostCardMixins";
 
+
 .MainPage {
   width: 100%;
 
-  .main_container {
+  .main-container {
     @include align_flex(column, center, center, center, center);
 
     width: 100%;
@@ -15,39 +16,56 @@
       margin-top: 20px;
     }
 
-    .recent_posts {
-      @include align_flex(column, center, center, center, center);
+    .recent-posts {
+      width: 60%;
 
-      width: 100%;
+      @media (max-width: 1000px) {
+        width: 80%;
+      }
 
-      .Feed {
-        width: 60%;
+      .ExtendedPostCard {
+        &:nth-child(odd) {
+          @include left_post;
+        }
 
-        .ExtendedPostCard {
-          &:nth-child(odd) {
-            @include left_post;
-          }
-
-          &:nth-child(even) {
-            @include right_post;
-          }
+        &:nth-child(even) {
+          @include right_post;
         }
       }
     }
 
-    .best_projects .Feed{
+    .ready-projects{
       @include align_flex(row, center, center, center, center);
+
+      @media (max-width: 1000px) {
+        @include align_flex(column, center, center, center, center);
+
+      }
     }
 
-    .project_in_process {
+    .project-in-process {
       @include align_flex(row, space-evenly, center, center, center);
 
       width: 100%;
 
+      .ProjectCard {
+        @media (max-width: 576px) {
+          width: 200px;
+        }
+      }
+
       .DynamicArrows {
+        $arrow_size: 30px;
+        $smaller_arrow_size: 20px;
+
         .AngleArrow {
-          width: 30px;
-          height: 30px;
+          width: $arrow_size;
+          height: $arrow_size;
+
+          @media (max-width: 768px) {
+            width: $smaller_arrow_size;
+            height: $smaller_arrow_size;
+          }
         }
       }
     }

@@ -32,7 +32,7 @@ const IdProjectPage = () => {
 
 const FetchedProjectContent = ({id}: { id: number }) => {
     const cardCreator = ({item}: { item: Project }) => (
-        <div>
+        <div className={"content"}>
             <ProjectCard item={item}
                          pictureSize={pictureSize.LARGE}
             />

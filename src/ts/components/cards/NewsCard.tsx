@@ -10,7 +10,7 @@ const NewsCard = ({item, project, className}: CardProps<News> & {
     project?: Project,
 }) => {
     return (
-        <div className={concatClassNames("NewsCard", className)}>
+        <article className={concatClassNames("NewsCard", className)}>
             {
                 project &&
                 <ProjectCard className="picture"
@@ -28,7 +28,7 @@ const NewsCard = ({item, project, className}: CardProps<News> & {
                     </div>
                 </div>
             </LinkedCard>
-        </div>
+        </article>
     );
 };
 

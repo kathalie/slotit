@@ -3,9 +3,17 @@
 @import "common";
 
 body {
+  width: 100%;
   font-family: $sans-serif_font;
+  overflow-x: hidden;
 
-  @include align-flex(column, center, center, center, center);
+  .root {
+    width: 100%;
+
+    .App {
+      width: 100%;
+    }
+  }
 }
 
 h1 {
@@ -19,5 +27,4 @@ h1 {
 .main-hr {
   width: 75%;
   color: $dark_grey;
-  margin: 70px auto 10px auto;
 }

@@ -2,6 +2,10 @@
 @import "pages/AboutUsPage";
 @import "pages/PostsPage";
 @import "pages/ProjectsPage";
+@import "pages/ProjectsPage";
+@import "pages/single_pages/IdNewsPage";
+@import "pages/single_pages/IdPostPage";
+@import "pages/single_pages/IdProjectPage";
 
 @import "cards/PostCard";
 @import "cards/ExtendedPostCard";
@@ -24,4 +28,7 @@
 @import "UI_Elements/AngleArrow";
 @import "UI_Elements/Pagination";
 
-@import "queries/Sort";
+@import "queries/Queries";
+
+@import "navigation/SidebarNavigation";
+@import "navigation/InlineNavigation";

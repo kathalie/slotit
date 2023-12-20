@@ -1,9 +1,8 @@
 @import "../common";
-@import "../cards/PostCardMixins";
 @import "../constants/fonts";
 @import "../constants/colors";
 
-.PostsPage {
+.NewsPage {
   @include align_flex(column, center, center, center, center);
 
   width: 100%;
@@ -13,10 +12,6 @@
 
     @media (max-width: 1000px) {
       width: 90%;
-    }
-
-    .PostCard {
-      @include left_post;
     }
   }
 }

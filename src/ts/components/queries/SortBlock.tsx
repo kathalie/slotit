@@ -31,6 +31,7 @@ const SortBlock = <Q extends IQueryBuilder>({useQb, particularSorts, className}:
 
     return (
         <div className={concatClassNames("SortBlock", className)}>
+            Сортувати за:
             {
                 particularSorts.map((sortParameter) =>
                     <SortButton

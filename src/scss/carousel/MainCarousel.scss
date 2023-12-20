@@ -2,7 +2,7 @@
 @import "../constants/colors";
 
 .MainCarousel {
-  height: 85vh;
+  height: min-content;
 }
 
 .MainCarouselItem {
@@ -12,6 +12,7 @@
   img {
     display: block;
     width: 100%;
+    height: 85vh;
     object-fit: cover;
   }
 
@@ -27,13 +28,18 @@
     background: rgba(0,0,0,0.6);
 
     p {
+      margin-bottom: 40px;
       text-align: center;
       inline-size: 60%;
       white-space: normal;
 
       font-family: $serif_font;
       font-size: 40pt;
-      margin-bottom: 40px;
+
+      @media (max-width: 768px) {
+        font-size: 32pt;
+      }
+
     }
 
     hr {

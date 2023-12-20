@@ -21,7 +21,7 @@ const NewsPage = () => {
     }
 
     return (
-        <div>
+        <div className={"NewsPage"}>
             <h1>Новини</h1>
             <Queries queries={queries} useQb={{qb, setQb}}/>
             <FetchedFeed useQb={{qb, setQb}}

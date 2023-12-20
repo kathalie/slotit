@@ -19,6 +19,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant:wght@100;300");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;500&display=swap");
 .popup.hidden {
   display: none;
 }
@@ -30,7 +32,7 @@
 .MainPage {
   width: 100%;
 }
-.MainPage .main_container {
+.MainPage .main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,40 +41,40 @@
   text-align: center;
   width: 100%;
 }
-.MainPage .main_container .LearnMore {
+.MainPage .main-container .LearnMore {
   border-color: #222;
   margin-top: 20px;
 }
-.MainPage .main_container .recent_posts {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  width: 100%;
-}
-.MainPage .main_container .recent_posts .Feed {
+.MainPage .main-container .recent-posts {
   width: 60%;
 }
-.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(odd) img {
+@media (max-width: 1000px) {
+  .MainPage .main-container .recent-posts {
+    width: 80%;
+  }
+}
+.MainPage .main-container .recent-posts .ExtendedPostCard:nth-child(odd) img {
   right: unset;
   left: 0;
 }
-.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(odd) .brief_info {
-  right: 0;
-  padding-left: 40px;
-  padding-right: 10px;
+@media (min-width: 576px) {
+  .MainPage .main-container .recent-posts .ExtendedPostCard:nth-child(odd) .brief_info {
+    right: 0;
+    padding-left: 40px;
+    padding-right: 10px;
+  }
 }
-.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(even) img {
+.MainPage .main-container .recent-posts .ExtendedPostCard:nth-child(even) img {
   left: unset;
   right: 0;
 }
-.MainPage .main_container .recent_posts .Feed .ExtendedPostCard:nth-child(even) .brief_info {
-  left: 0;
-  padding-right: 40px;
+@media (min-width: 576px) {
+  .MainPage .main-container .recent-posts .ExtendedPostCard:nth-child(even) .brief_info {
+    left: 0;
+    padding-right: 40px;
+  }
 }
-.MainPage .main_container .best_projects .Feed {
+.MainPage .main-container .ready-projects {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -80,7 +82,17 @@
   align-content: center;
   text-align: center;
 }
-.MainPage .main_container .project_in_process {
+@media (max-width: 1000px) {
+  .MainPage .main-container .ready-projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+  }
+}
+.MainPage .main-container .project-in-process {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -89,9 +101,20 @@
   text-align: center;
   width: 100%;
 }
-.MainPage .main_container .project_in_process .DynamicArrows .AngleArrow {
+@media (max-width: 576px) {
+  .MainPage .main-container .project-in-process .ProjectCard {
+    width: 200px;
+  }
+}
+.MainPage .main-container .project-in-process .DynamicArrows .AngleArrow {
   width: 30px;
   height: 30px;
+}
+@media (max-width: 768px) {
+  .MainPage .main-container .project-in-process .DynamicArrows .AngleArrow {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .popup.hidden {
@@ -195,6 +218,7 @@
 .AboutUsPage .MapContainer {
   width: 75%;
   height: 500px;
+  z-index: 0;
 }
 
 .popup.hidden {
@@ -214,50 +238,26 @@
   text-align: center;
   width: 100%;
 }
-.PostsPage .posts {
+.PostsPage .Feed {
   width: 60%;
 }
-.PostsPage .posts .PostCard img {
+@media (max-width: 1000px) {
+  .PostsPage .Feed {
+    width: 90%;
+  }
+}
+.PostsPage .Feed .PostCard img {
   right: unset;
   left: 0;
 }
-.PostsPage .posts .PostCard .brief_info {
-  right: 0;
-  padding-left: 40px;
-  padding-right: 10px;
+@media (min-width: 576px) {
+  .PostsPage .Feed .PostCard .brief_info {
+    right: 0;
+    padding-left: 40px;
+    padding-right: 10px;
+  }
 }
-.PostsPage .queries {
-  display: flex;
-  flex-direction: row;
-  justify-content: normal;
-  align-items: normal;
-  align-content: normal;
-  text-align: left;
-  border: 1px dashed #222;
-  padding: 10px 0;
-  margin-bottom: 20px;
-}
-.PostsPage .queries label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: normal;
-  align-content: normal;
-  text-align: left;
-  width: 50%;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 18pt;
-  font-family: "Cormorant", serif;
-}
-.PostsPage .queries .filters select, .PostsPage .queries .filters button, .PostsPage .queries .sorts select, .PostsPage .queries .sorts button {
-  margin-top: 15px;
-  height: 40px;
-  font-size: 14pt;
-}
-.PostsPage .queries .filters {
-  display: inline-block;
-}
+
 .popup.hidden {
   display: none;
 }
@@ -275,24 +275,158 @@
   text-align: left;
   width: 100vw;
 }
-.ProjectsPage .projects .Feed {
+.ProjectsPage .Feed {
+  max-width: min-content;
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-template-rows: auto;
-  max-width: min-content;
 }
 @media screen and (max-width: 768px) {
-  .ProjectsPage .projects .Feed {
+  .ProjectsPage .Feed {
     grid-template-columns: repeat(auto, auto);
   }
 }
 @media screen and (max-width: 540px) {
-  .ProjectsPage .projects .Feed {
+  .ProjectsPage .Feed {
     grid-template-columns: repeat(auto, auto);
   }
 }
-.ProjectsPage .projects .Pagination {
+@media (max-width: 1000px) {
+  .ProjectsPage .Feed {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+  }
+}
+@media screen and (max-width: 1000px) and (max-width: 768px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media screen and (max-width: 1000px) and (max-width: 540px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media (max-width: 700px) {
+  .ProjectsPage .Feed {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: auto;
+  }
+}
+@media screen and (max-width: 700px) and (max-width: 768px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media screen and (max-width: 700px) and (max-width: 540px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+.ProjectsPage .Pagination {
   margin-top: 20px;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.ProjectsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: normal;
+  text-align: left;
+  width: 100vw;
+}
+.ProjectsPage .Feed {
+  max-width: min-content;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: auto;
+}
+@media screen and (max-width: 768px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media screen and (max-width: 540px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media (max-width: 1000px) {
+  .ProjectsPage .Feed {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+  }
+}
+@media screen and (max-width: 1000px) and (max-width: 768px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media screen and (max-width: 1000px) and (max-width: 540px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media (max-width: 700px) {
+  .ProjectsPage .Feed {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: auto;
+  }
+}
+@media screen and (max-width: 700px) and (max-width: 768px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+@media screen and (max-width: 700px) and (max-width: 540px) {
+  .ProjectsPage .Feed {
+    grid-template-columns: repeat(auto, auto);
+  }
+}
+.ProjectsPage .Pagination {
+  margin-top: 20px;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.IdProjectPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.IdProjectPage .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 100%;
+}
+.IdProjectPage .content .ProjectCard {
+  width: 70%;
 }
 
 .popup.hidden {
@@ -311,10 +445,12 @@
   right: unset;
   left: 0;
 }
-.PostCard .brief_info, .NewsCard .brief_info {
-  right: 0;
-  padding-left: 40px;
-  padding-right: 10px;
+@media (min-width: 576px) {
+  .PostCard .brief_info, .NewsCard .brief_info {
+    right: 0;
+    padding-left: 40px;
+    padding-right: 10px;
+  }
 }
 .PostCard .LinkedCard, .NewsCard .LinkedCard {
   height: 300px;
@@ -323,6 +459,16 @@
   width: 100%;
   position: relative;
   margin: 10px 0;
+}
+@media (max-width: 768px) {
+  .PostCard .LinkedCard, .NewsCard .LinkedCard {
+    height: 200px;
+  }
+}
+@media (max-width: 576px) {
+  .PostCard .LinkedCard, .NewsCard .LinkedCard {
+    height: min-content;
+  }
 }
 .PostCard .LinkedCard:hover, .NewsCard .LinkedCard:hover {
   transition: all 0.1s;
@@ -336,6 +482,18 @@
   background-color: #222;
   color: white;
 }
+@media (max-width: 768px) {
+  .PostCard .LinkedCard .picture, .NewsCard .LinkedCard .picture {
+    height: 200px;
+    width: 200px;
+  }
+}
+@media (max-width: 576px) {
+  .PostCard .LinkedCard .picture, .NewsCard .LinkedCard .picture {
+    position: unset;
+    display: block;
+  }
+}
 .PostCard .LinkedCard .brief_info, .NewsCard .LinkedCard .brief_info {
   display: flex;
   flex-direction: column;
@@ -348,6 +506,18 @@
   width: calc(100% - 300px);
   padding: 10px 0;
 }
+@media (max-width: 768px) {
+  .PostCard .LinkedCard .brief_info, .NewsCard .LinkedCard .brief_info {
+    width: calc(100% - 200px);
+  }
+}
+@media (max-width: 576px) {
+  .PostCard .LinkedCard .brief_info, .NewsCard .LinkedCard .brief_info {
+    position: unset;
+    width: 100%;
+    padding-left: 0;
+  }
+}
 .PostCard .LinkedCard .brief_info .date, .NewsCard .LinkedCard .brief_info .date {
   text-align: left;
   color: #444;
@@ -356,9 +526,19 @@
   font-size: 20pt;
   margin-bottom: 10px;
 }
+@media (max-width: 768px) {
+  .PostCard .LinkedCard .brief_info h2, .NewsCard .LinkedCard .brief_info h2 {
+    font-size: 16pt;
+  }
+}
 .PostCard .LinkedCard .brief_info .description, .NewsCard .LinkedCard .brief_info .description {
   font-family: "Cormorant", serif;
   font-size: 18pt;
+}
+@media (max-width: 768px) {
+  .PostCard .LinkedCard .brief_info .description, .NewsCard .LinkedCard .brief_info .description {
+    font-size: 14pt;
+  }
 }
 
 .popup.hidden {
@@ -380,11 +560,13 @@
 .ExtendedPostCard:nth-child(odd) {
   align-items: flex-start;
 }
-.ExtendedPostCard:nth-child(even) {
-  align-items: flex-end;
-}
-.ExtendedPostCard:nth-child(even) a {
-  padding-right: 20px;
+@media (min-width: 576px) {
+  .ExtendedPostCard:nth-child(even) {
+    align-items: flex-end;
+  }
+  .ExtendedPostCard:nth-child(even) a {
+    padding-right: 20px;
+  }
 }
 .ExtendedPostCard a {
   display: flex;
@@ -459,6 +641,10 @@
   transform: scale(1.05);
 }
 
+.NewsCard .picture {
+  display: inline-block;
+}
+
 .popup.hidden {
   display: none;
 }
@@ -477,87 +663,15 @@
   position: sticky;
   top: 0;
   width: 100%;
+  width: 100%;
+  height: 100px;
   z-index: 10;
-  padding: 30px 70px;
   background-color: #fff;
   font-family: "Raleway", sans-serif;
   font-weight: 300;
 }
-
-.MainNavigation > ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  list-style: none;
-  margin: auto;
-  padding-top: 10px;
-  font-size: 16pt;
-}
-.MainNavigation > ul > li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: normal;
-  align-content: normal;
-  text-align: left;
-  padding: 1px 25px;
-}
-.MainNavigation > ul > li:not(.MainNavigation > ul > li:last-child) {
-  border-right: 1px solid #999;
-}
-.MainNavigation > ul li.major-link a:hover {
-  color: #9b6ac5;
-  font-weight: 500;
-}
-.MainNavigation > ul li.major-link:has(.dropdown) {
-  position: relative;
-}
-.MainNavigation > ul div.dropdown {
-  display: inline-block;
-}
-.MainNavigation > ul div.dropdown > a {
-  position: relative;
-}
-.MainNavigation > ul div.dropdown > a::after {
-  content: "‹";
-  position: absolute;
-  right: -15px;
-  display: inline-block;
-  font-size: 24px;
-  color: #444;
-  transition: 0.5s ease-in-out;
-  rotate: -90deg;
-  rotate: -90deg;
-}
-.MainNavigation > ul div.dropdown:hover .dropdown-content {
-  display: block;
-}
-.MainNavigation > ul div.dropdown:hover a::after {
-  rotate: 90deg;
-}
-.MainNavigation > ul div.dropdown .dropdown-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: normal;
-  align-content: normal;
-  text-align: left;
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: #f1f1f1;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.MainNavigation > ul div.dropdown .dropdown-content li {
-  padding: 15px 0;
-  font-size: 0.85em;
-  white-space: nowrap;
-}
-.MainNavigation > ul div.dropdown .dropdown-content li a {
-  padding: 0 24px 0 12px;
+.MainHeader .Logo {
+  margin-left: 30px;
 }
 
 a.current {
@@ -574,12 +688,18 @@ a.current {
 }
 
 .MainFooter {
+  width: 100%;
   margin-top: 30px;
   padding: 50px 150px;
   background-color: #222;
   color: white;
   font-size: 14px;
   font-weight: 200;
+}
+@media (max-width: 768px) {
+  .MainFooter {
+    padding: 30px 0;
+  }
 }
 .MainFooter .FooterNavigation ul {
   display: flex;
@@ -603,6 +723,23 @@ a.current {
 }
 .MainFooter .FooterNavigation ul > li:not(.MainFooter .FooterNavigation ul > li:last-child) {
   border-right: 1px solid white;
+}
+@media (max-width: 768px) {
+  .MainFooter .FooterNavigation ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+  }
+  .MainFooter .FooterNavigation ul a {
+    text-align: center;
+  }
+  .MainFooter .FooterNavigation ul > .footer-link {
+    border: none !important;
+    margin: 5px 0;
+  }
 }
 .MainFooter .FooterNavigation ul li:hover {
   font-weight: 300;
@@ -637,13 +774,15 @@ a.current {
 }
 
 body {
+  width: 100%;
   font-family: "Raleway", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
+  overflow-x: hidden;
+}
+body .root {
+  width: 100%;
+}
+body .root .App {
+  width: 100%;
 }
 
 h1 {
@@ -656,7 +795,6 @@ h1 {
 .main-hr {
   width: 75%;
   color: #222;
-  margin: 70px auto 10px auto;
 }
 
 .popup.hidden {
@@ -731,15 +869,25 @@ h1 {
 }
 
 .left-control {
-  left: 100px;
+  left: 80px;
+}
+@media (max-width: 768px) {
+  .left-control {
+    left: 10px;
+  }
 }
 
 .right-control {
-  right: 100px;
+  right: 80px;
+}
+@media (max-width: 768px) {
+  .right-control {
+    right: 10px;
+  }
 }
 
 .MainCarousel {
-  height: 85vh;
+  height: min-content;
 }
 
 .MainCarouselItem {
@@ -749,6 +897,7 @@ h1 {
 .MainCarouselItem img {
   display: block;
   width: 100%;
+  height: 85vh;
   object-fit: cover;
 }
 .MainCarouselItem .info {
@@ -762,12 +911,17 @@ h1 {
   background: rgba(0, 0, 0, 0.6);
 }
 .MainCarouselItem .info p {
+  margin-bottom: 40px;
   text-align: center;
   inline-size: 60%;
   white-space: normal;
   font-family: "Cormorant", serif;
   font-size: 40pt;
-  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .MainCarouselItem .info p {
+    font-size: 32pt;
+  }
 }
 .MainCarouselItem .info hr {
   width: 50%;
@@ -922,12 +1076,246 @@ h1 {
   color: #666;
 }
 
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
 .asc::after {
   content: "￪";
 }
 
 .desc::after {
   content: "￬";
+}
+
+.Queries {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  align-content: center;
+  text-align: left;
+  width: 50%;
+  border: 1px dashed #222;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+@media (max-width: 1100px) {
+  .Queries {
+    width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  .Queries {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: left;
+  }
+}
+@media (max-width: 568px) {
+  .Queries {
+    width: 100%;
+  }
+}
+.Queries .Filters, .Queries .SortBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: left;
+  text-align: center;
+  font-size: 18pt;
+  font-family: "Cormorant", serif;
+}
+@media (max-width: 768px) {
+  .Queries .Filters, .Queries .SortBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: left;
+    font-size: 14pt;
+  }
+}
+.Queries .Filters select, .Queries .Filters button, .Queries .SortBlock select, .Queries .SortBlock button {
+  height: 40px;
+  font-size: 14pt;
+}
+@media (max-width: 768px) {
+  .Queries .Filters select, .Queries .Filters button, .Queries .SortBlock select, .Queries .SortBlock button {
+    font-size: 10pt;
+  }
+}
+.Queries .Filters .Filter select {
+  display: block;
+}
+.Queries .Search {
+  display: block;
+  height: 50px;
+}
+.Queries > div, .Queries .Search {
+  margin: 10px 10px;
+}
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.SidebarNavigation {
+  position: relative;
+  height: 100%;
+  width: 400px;
+}
+.SidebarNavigation .SideBarHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: normal;
+  align-content: normal;
+  text-align: left;
+}
+.SidebarNavigation .SideBarHeader .burger-button {
+  border: unset;
+  outline: unset;
+  background-color: transparent;
+  color: #222;
+  font-size: 24pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  width: 100px;
+}
+.SidebarNavigation .SidebarNav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #222;
+  color: white;
+}
+.SidebarNavigation .SidebarNav .close-button {
+  border: unset;
+  outline: unset;
+  background-color: transparent;
+  color: white;
+  font-size: 24pt;
+  padding: 20px;
+}
+.SidebarNavigation .SidebarNav .navigation {
+  padding: 40px;
+  font-size: 18pt;
+}
+.SidebarNavigation .SidebarNav .navigation .SidebarLink {
+  margin: 20px 0;
+}
+.SidebarNavigation .SidebarNav .navigation .SidebarLink a:hover, .SidebarNavigation .SidebarNav .navigation .SidebarLink summary:hover {
+  color: #e3921c;
+}
+.SidebarNavigation .SidebarNav .navigation .SidebarLink .toggle-link {
+  cursor: pointer;
+}
+.SidebarNavigation .SidebarNav .navigation .SidebarLink .toggle-link .sub-link {
+  padding-left: 24px;
+  font-size: 16pt;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+:where(h1, h2) {
+  margin: 0;
+}
+
+.InlineNavigation > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  list-style: none;
+  margin: auto;
+  padding-top: 10px;
+  font-size: 16pt;
+}
+.InlineNavigation > ul > li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  align-content: normal;
+  text-align: left;
+  padding: 1px 25px;
+}
+.InlineNavigation > ul > li:not(.InlineNavigation > ul > li:last-child) {
+  border-right: 1px solid #999;
+}
+.InlineNavigation > ul li.major-link a:hover {
+  color: #9b6ac5;
+  font-weight: 500;
+}
+.InlineNavigation > ul li.major-link:has(.dropdown) {
+  position: relative;
+}
+.InlineNavigation > ul div.dropdown {
+  display: inline-block;
+}
+.InlineNavigation > ul div.dropdown > a {
+  position: relative;
+}
+.InlineNavigation > ul div.dropdown > a::after {
+  content: "‹";
+  position: absolute;
+  right: -15px;
+  display: inline-block;
+  font-size: 24px;
+  color: #444;
+  transition: 0.5s ease-in-out;
+  rotate: -90deg;
+  rotate: -90deg;
+}
+.InlineNavigation > ul div.dropdown:hover .dropdown-content {
+  display: block;
+}
+.InlineNavigation > ul div.dropdown:hover a::after {
+  rotate: 90deg;
+}
+.InlineNavigation > ul div.dropdown .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  align-content: normal;
+  text-align: left;
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #f1f1f1;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.InlineNavigation > ul div.dropdown .dropdown-content li {
+  padding: 15px 0;
+  font-size: 0.85em;
+  white-space: nowrap;
+}
+.InlineNavigation > ul div.dropdown .dropdown-content li a {
+  padding: 0 24px 0 12px;
 }
 
 /*# sourceMappingURL=app.css.map */

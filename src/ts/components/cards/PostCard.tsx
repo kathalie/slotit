@@ -13,7 +13,7 @@ export const PostCard = ({item, className, children}: CardProps<Post> & {
     children?: JSXChildren
 }) => {
     return (
-        <div className={concatClassNames("PostCard", className)}>
+        <article className={concatClassNames("PostCard", className)}>
             <LinkedCard id={item.id} link={links.postId}>
                 <img className="picture" src={item.smallPicture} alt={`Picture of post with title "${item.title}"`}/>
                 <div className="brief_info">
@@ -27,7 +27,7 @@ export const PostCard = ({item, className, children}: CardProps<Post> & {
             {
                 children && Children.map(children, (child) => React.cloneElement(child))
             }
-        </div>
+        </article>
     );
 };
 
